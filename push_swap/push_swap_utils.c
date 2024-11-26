@@ -13,46 +13,43 @@
 #include "push_swap.h"
 
 /*
-	get the amount of index of an array
+	Removes the first element of the array
 */
-int	ft_arraylen(int *a)
-{
-	int	i;
-
-	i = 0;
-	while (a[i])
-		i++;
-	return (i);
-}
-
-int	*arrayup(int *n)
+int	*arrayup(int *n, int array_size)
 {
 	int	*stack;
 	int	i;
 	int	j;
 
-	stack = malloc((ft_arraylen(n) - 1) * sizeof(int));
+	stack = malloc((array_size - 1) * sizeof(int));
 	if (!stack)
 		return (NULL);
 	i = 1;
 	j = 0;
-	while (n[i])
+	while (i < array_size)
 		stack[j++] = n[i++];
 	return (stack);
 }
 
-int	*arraydown(int *n)
+/*
+	free the first slot of the array pushing the other numbers
+
+	1, 2, 3
+	0, 1, 2, 3
+	the fisrt slot isn't filled
+*/
+int	*arraydown(int *n, int array_size)
 {
 	int	*stack;
 	int	i;
 	int	j;
 
-	stack = malloc((ft_arraylen(n) + 1) * sizeof(int));
+	stack = malloc(array_size * sizeof(int));
 	if (!stack)
 		return (NULL);
 	i = 0;
 	j = 1;
-	while (n[i])
+	while (i < array_size)
 		stack[j++] = n[i++];
 	return (stack);
 }
