@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:42:42 by jopereir          #+#    #+#             */
-/*   Updated: 2024/11/27 14:36:31 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:48:36 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,17 @@ void	ft_double_free(int *a, int *b)
 
 int	main(int argc, char *argv[])
 {
-	// int	*a;
-	// int	*b;
-	//int	size;
+	int	*a;
+	int	*b;
+	int	size;
 
 	if (argc <= 2 || already_sorted(&argv[1]))
 		exit (0);
 	if (!isalldigit(&argv[1]) || isduplicate(&argv[1])
 		|| islargerthan_limits(&argv[1]))
 		exit(ft_printf("Error\n"));
-	// a = stack_init(argv, &size);
-	// b = ft_calloc(size, sizeof(int));
-	ft_printf("Success\n");
+	a = stack_init(argv, &size);
+	b = ft_calloc(size, sizeof(int));
+	ft_least_moves(a, b, size);
 	return (0);
 }

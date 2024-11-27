@@ -6,14 +6,14 @@
 #    By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 11:11:14 by jopereir          #+#    #+#              #
-#    Updated: 2024/11/27 14:37:17 by jopereir         ###   ########.fr        #
+#    Updated: 2024/11/27 14:55:03 by jopereir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftpushswap.a
 
 SRC = swap.c ft_init.c push_swap_utils.c push.c rotate.c reverse_rotate.c \
-		already_sorted.c
+		already_sorted.c operations.c ft_least_moves.c
 OBJ = $(SRC:.c=.o)
 HEADER = include
 LIBFT = libft
