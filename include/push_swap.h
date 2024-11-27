@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:49:58 by jopereir          #+#    #+#             */
-/*   Updated: 2024/11/27 12:45:55 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:36:16 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ void	ft_rotate(int *n, int array_size);
 void	ft_reverse_rotate(int *n, int array_size);
 int		isduplicate(char **s);
 int		islargerthan_limits(char **s);
+int		already_sorted(char **s);
 
 #endif
