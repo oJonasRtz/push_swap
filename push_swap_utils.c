@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:02:13 by jopereir          #+#    #+#             */
-/*   Updated: 2024/11/25 10:02:12 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/11/27 10:44:21 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	*arrayup(int *n, int array_size)
 	j = 0;
 	while (i < array_size)
 		stack[j++] = n[i++];
+	free(n);
 	return (stack);
 }
 
@@ -51,6 +52,7 @@ int	*arraydown(int *n, int array_size)
 	j = 1;
 	while (i < array_size)
 		stack[j++] = n[i++];
+	free(n);
 	return (stack);
 }
 

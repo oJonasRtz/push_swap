@@ -1,22 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:00:57 by jopereir          #+#    #+#             */
-/*   Updated: 2024/11/25 10:03:21 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/11/27 10:20:50 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_push(int **src, int **dest)
+/*
+	Takes the fisrt element and move to the end of the array
+
+	input: 1, 2, 3, 4, 5
+	output: 5, 1, 2, 3, 4
+*/
+void	ft_reverse_rotate(int *n, int array_size)
 {
-	if (ft_arraylen(*src) <= 1)
+	int	temp;
+	int	i;
+
+	if (array_size < 2)
 		return ;
-	*dest = arraydown(*dest);
-	(*dest)[0] = (*src)[0];
-	*src = arrayup(*src);
+	temp = n[array_size - 1];
+	i = array_size - 1;
+	while (i > 0)
+	{
+		n[i] = n[i - 1];
+		i--;
+	}
+	n[i] = temp;
 }
