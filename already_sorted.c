@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 10:11:30 by jopereir          #+#    #+#             */
-/*   Updated: 2024/11/27 14:35:51 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/11/28 10:15:52 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	already_sorted(char **s)
 	{
 		num = ft_atoi(s[i]);
 		num2 = ft_atoi(s[i - 1]);
-		if (num < num2)
+		if (num <= num2)
 			return (0);
 		i++;
 	}

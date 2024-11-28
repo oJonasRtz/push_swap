@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:38:49 by jopereir          #+#    #+#             */
-/*   Updated: 2024/11/27 15:14:18 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/11/28 10:13:22 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,5 @@ void	ft_least_moves(int *a, int *b, int size)
 	else
 		ft_strlcpy(commands, "std_output", 11);
 	ft_printf("%s\n", commands);
+	free(commands);
 }

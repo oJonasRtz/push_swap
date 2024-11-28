@@ -1,13 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   ft_double_free.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/27 14:55:19 by jopereir          #+#    #+#             */
-/*   Updated: 2024/11/28 10:10:45 by jopereir         ###   ########.fr       */
+/*   Created: 2024/11/28 10:20:40 by jopereir          #+#    #+#             */
+/*   Updated: 2024/11/28 10:22:54 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
+
+void	*ft_double_free(void *a, void *b)
+{
+	free(a);
+	free(b);
+	return (NULL);
+}

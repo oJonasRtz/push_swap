@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:42:42 by jopereir          #+#    #+#             */
-/*   Updated: 2024/11/27 14:48:36 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/11/28 10:23:48 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@
 // 	}
 // }
 
-void	ft_double_free(int *a, int *b)
-{
-	free(a);
-	free(b);
-}
-
 int	main(int argc, char *argv[])
 {
 	int	*a;
@@ -48,5 +42,6 @@ int	main(int argc, char *argv[])
 	a = stack_init(argv, &size);
 	b = ft_calloc(size, sizeof(int));
 	ft_least_moves(a, b, size);
+	ft_double_free(a, b);
 	return (0);
 }
