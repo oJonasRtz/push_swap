@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:49:58 by jopereir          #+#    #+#             */
-/*   Updated: 2024/11/28 13:00:50 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/11/28 15:40:23 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ void	ft_push(int **src, int **dest, int array_size);
 int		*stack_init(char **s, int *size);
 int		isalldigit(char **s);
 int		ft_arraylen(int *a);
-int		*arraydown(int *n, int array_size);
-int		*arrayup(int *n, int array_size);
 void	ft_rotate(int *n, int array_size);
 void	ft_reverse_rotate(int *n, int array_size);
 int		isduplicate(char **s);
