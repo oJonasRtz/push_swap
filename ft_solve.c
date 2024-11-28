@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 10:49:18 by jopereir          #+#    #+#             */
-/*   Updated: 2024/11/28 12:09:18 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/11/28 12:51:39 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,26 @@ char	*ft_case3(int **a, int size)
 	if (bigger_num == size - 1)
 		operations = ft_get_strcat(operations, ft_sa(*a, size));
 	else if (bigger_num == 0 && smaller_num == size - 1)
-			operations = ft_get_strcat(operations,
-				ft_strjoin(ft_sa(*a, size), ft_rra(*a, size)));
+	{
+			operations = ft_get_strcat(operations, ft_sa(*a, size));
+			operations = ft_get_strcat(operations, ft_rra(*a, size));
+	}
 	else if (bigger_num == 0 && smaller_num != size - 1)
 			operations = ft_get_strcat(operations, ft_ra(*a, size));
 	else if (smaller_num == 0)
-		operations = ft_get_strcat(operations,
-				ft_strjoin(ft_sa(*a, size), ft_ra(*a, size)));
+	{
+		operations = ft_get_strcat(operations, ft_sa(*a, size));
+		operations = ft_get_strcat(operations, ft_ra(*a, size));
+	}
 	else
 		operations = ft_get_strcat(operations, ft_rra(*a, size));
 	return (operations);
 }
+
+// char	*ft_case5(int *a, int *b, int array_size)
+// {
+// 	char	*operations;
+
+// 	operations = ft_calloc(1, 1);
+// 	return (operations);
+// }
