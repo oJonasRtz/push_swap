@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:02:13 by jopereir          #+#    #+#             */
-/*   Updated: 2024/11/27 14:22:03 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/11/28 14:16:32 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	*arrayup(int *n, int array_size)
 	int	i;
 	int	j;
 
-	stack = malloc((array_size - 1) * sizeof(int));
+	stack = ft_calloc((array_size - 1), sizeof(int));
 	if (!stack)
 		return (NULL);
 	i = 1;
@@ -45,7 +45,7 @@ int	*arraydown(int *n, int array_size)
 	int	i;
 	int	j;
 
-	stack = malloc(array_size * sizeof(int));
+	stack = ft_calloc(array_size, sizeof(int));
 	if (!stack)
 		return (NULL);
 	i = 0;

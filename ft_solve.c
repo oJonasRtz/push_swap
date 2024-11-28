@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 10:49:18 by jopereir          #+#    #+#             */
-/*   Updated: 2024/11/28 12:51:39 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/11/28 15:29:32 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,68 @@ char	*ft_case3(int **a, int size)
 	return (operations);
 }
 
-// char	*ft_case5(int *a, int *b, int array_size)
+// static char	*ft_case5_helper(int *a, int *b, int size)
 // {
 // 	char	*operations;
+// 	char	*temp;
+// 	int		bigger_num;
+// 	int		smaller_num;
 
-// 	operations = ft_calloc(1, 1);
+// 	operations = ft_calloc (1, 1);
+// 	bigger_num = get_bigger_num(a, size);
+// 	smaller_num = get_smaller_num(a, size);
+// 	operations = ft_get_strcat(operations, ft_ra(a, size));
+// 	if (!issorted(a, size))
+// 	{
+// 		operations = ft_get_strcat(operations, ft_pb(a, b, size));
+// 		temp = ft_case3(&a, size);
+// 		operations = ft_get_strcat(operations, temp);
+// 		free(temp);
+// 		operations = ft_get_strcat(operations, ft_pa(a, b, size));
+// 	}
 // 	return (operations);
 // }
+
+char	*ft_double_push(int **a, int **b, int size, char *op)
+{
+	char	*operations;
+
+	operations = ft_calloc (1, 1);
+	operations = ft_get_strcat(operations, ft_pb(*a, *b, size));
+	operations = ft_get_strcat(operations, ft_pb(*a, *b, size));
+	free(op);
+	return (operations);
+}
+
+/*
+	1.move 2 number to stack b
+	2.aplly case3 to stack a
+	3.solve the 	
+*/
+char	*ft_case5(int **a, int **b, int size)
+{
+	char	*operations;
+	char	*temp;
+	int		i;
+
+	operations = ft_calloc (1, 1);
+	operations = ft_double_push(a, b, size, operations);
+	temp = ft_case3(a, size);
+	operations = ft_get_strcat(operations, temp);
+	free(temp);
+	i = 1;
+	while (i <= 2 && !issorted(*a, size))
+	{
+		operations = ft_get_strcat(operations, ft_pa(*a, *b, size));
+		operations = ft_get_strcat(operations, ft_ra(*a, size));
+		operations = ft_get_strcat(operations, ft_pb(*a, *b, size));
+		if (i == 2)
+			operations = ft_get_strcat(operations, ft_pb(*a, *b, size));
+		temp = ft_case3(a, size);
+		operations = ft_get_strcat(operations, temp);
+		free(temp);
+		operations = ft_get_strcat(operations, ft_pa(*a, *b, size));
+		i++;
+	}
+	return (operations);
+}

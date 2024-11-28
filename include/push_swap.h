@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:49:58 by jopereir          #+#    #+#             */
-/*   Updated: 2024/11/28 12:26:50 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/11/28 13:00:50 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ char	*ft_rra(int *a, int array_size);
 char	*ft_ra(int *a, int array_size);
 char	*ft_pb(int *a, int *b, int array_size);
 char	*ft_pa(int *a, int *b, int array_size);
+char	*ft_case5(int **a, int **b, int size);
 
 #endif
