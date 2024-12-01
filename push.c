@@ -67,10 +67,10 @@ void	ft_push(int **src, int **dest, int array_size)
 		return ;
 	temp = ft_shift_right(dest, array_size);
 	(*dest)[0] = (*src)[0];
-	free(*dest);
 	*dest = temp;
+	free(temp);
 	temp = ft_shift_left(src, array_size);
-	free(*src);
 	*src = temp;
+	free(temp);
 	ft_printf("push\n");
 }

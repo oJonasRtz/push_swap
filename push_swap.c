@@ -40,7 +40,7 @@ int	main(int argc, char *argv[])
 		|| islargerthan_limits(&argv[1]))
 		exit(ft_printf("Error\n"));
 	a = stack_init(argv, &size);
-	b = ft_calloc(size, sizeof(int));
+	b = NULL;
 	ft_least_moves(a, b, size);
 	ft_double_free(a, b);
 	return (0);
