@@ -6,7 +6,7 @@
 #    By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 11:11:14 by jopereir          #+#    #+#              #
-#    Updated: 2024/11/28 11:36:56 by jopereir         ###   ########.fr        #
+#    Updated: 2024/12/02 10:00:23 by jopereir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ LIBFT = libft
 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -I$(HEADER) -g
+PROGRAM = push_swap
 
 all: $(NAME)
 
@@ -43,14 +44,14 @@ clean:
 fclean: clean
 	@echo "$(NAME) removed." 
 	@rm -f $(NAME)
-	@rm -f my_program
+	@rm -f $(PROGRAM)
 	@make -C $(LIBFT) fclean
 
 re: fclean all
 
 main: re
 	@echo "Compiling main"
-	@$(CC) $(CFLAGS) push_swap.c -L. -lftpushswap -o push_swap
+	@$(CC) $(CFLAGS) push_swap.c -L. -lftpushswap -o $(PROGRAM)
 	@$(MAKE) clean
 
 .PHONY: all clean fclean re

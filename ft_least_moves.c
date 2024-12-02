@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:38:49 by jopereir          #+#    #+#             */
-/*   Updated: 2024/11/28 15:33:42 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/02 10:33:38 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,13 @@ void	ft_least_moves(int *a, int *b, int array_size)
 	}
 	else if (array_size == 5)
 	{
-		// temp = ft_case5(&a, &b, array_size);
-		// commands = ft_get_strcat(commands, temp);
-		//free(temp);
-		ft_push(&a, &b, array_size);
+		temp = ft_case5(&a, &b, array_size);
+		commands = ft_get_strcat(commands, temp);
+		free(temp);
+		// free(b);
 	}
 	if (issorted(a, array_size))
 		ft_printf("%s", commands);
+	// free(a);
 	free(commands);
 }

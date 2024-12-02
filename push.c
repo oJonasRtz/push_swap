@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:00:57 by jopereir          #+#    #+#             */
-/*   Updated: 2024/11/28 16:27:54 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/02 10:34:00 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 	1 2 3
 	0 1 2 3
 */
-static int	*ft_shift_right(int **n, int size)
+static void	ft_shift_right(int **n, int size)
 {
 	int	*stack;
 	int	i;
@@ -31,7 +31,7 @@ static int	*ft_shift_right(int **n, int size)
 		stack[i + 1] = (*n)[i];
 		i--;
 	}
-	return (stack);
+	*n = stack;
 }
 
 /*
@@ -41,7 +41,7 @@ static int	*ft_shift_right(int **n, int size)
 	1 2 3
 	2 3
 */
-static int	*ft_shift_left(int **n, int size)
+static void	ft_shift_left(int **n, int size)
 {
 	int	*stack;
 	int	i;
@@ -53,7 +53,7 @@ static int	*ft_shift_left(int **n, int size)
 		stack[i] = (*n)[i + 1];
 		i++;
 	}
-	return (stack);
+	*n = stack;
 }
 
 /*
@@ -61,16 +61,9 @@ static int	*ft_shift_left(int **n, int size)
 */
 void	ft_push(int **src, int **dest, int array_size)
 {
-	int	*temp;
-
 	if (array_size < 2 || !*src)
 		return ;
-	temp = ft_shift_right(dest, array_size);
 	(*dest)[0] = (*src)[0];
-	free(*dest);
-	*dest = temp;
-	temp = ft_shift_left(src, array_size);
-	free(*src);
-	*src = temp;
-	ft_printf("push\n");
+	ft_shift_right(dest, array_size);
+	ft_shift_left(src, array_size);
 }
