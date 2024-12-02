@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:00:57 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/02 10:36:59 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/02 11:05:30 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static void	ft_shift_right(int **n, int size)
 	int	i;
 
 	stack = ft_calloc(size + 1, sizeof(int));
+	if (!stack)
+		return ;
 	i = size - 1;
 	while (i >= 0)
 	{
@@ -47,6 +49,8 @@ static void	ft_shift_left(int **n, int size)
 	int	i;
 
 	stack = ft_calloc(size - 1, sizeof(int));
+	if (!stack)
+		return ;
 	i = 0;
 	while (i < size - 1)
 	{
