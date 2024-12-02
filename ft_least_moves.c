@@ -41,10 +41,18 @@ void	ft_least_moves(int *a, int *b, int array_size)
 	}
 	else if (array_size == 5)
 	{
+<<<<<<< HEAD
 		temp = ft_case5(&a, &b, array_size);
 		commands = ft_get_strcat(commands, temp);
 		free(temp);
 		// free(b);
+=======
+		// temp = ft_case5(&a, &b, array_size);
+		// commands = ft_get_strcat(commands, temp);
+		//free(temp);
+		b = ft_calloc(array_size, sizeof(int));
+		ft_push(&a, &b, array_size);
+>>>>>>> 9bc468fd6a7bc7c841fb40afe0979732bfcaeb3d
 	}
 	if (issorted(a, array_size))
 		ft_printf("%s", commands);

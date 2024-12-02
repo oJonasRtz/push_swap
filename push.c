@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:00:57 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/02 10:34:00 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/02 10:36:59 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	ft_push(int **src, int **dest, int array_size)
 {
 	if (array_size < 2 || !*src)
 		return ;
-	(*dest)[0] = (*src)[0];
 	ft_shift_right(dest, array_size);
+	(*dest)[0] = (*src)[0];
 	ft_shift_left(src, array_size);
 }

@@ -59,14 +59,12 @@ char	*ft_itoa(int n)
 {
 	char	*str;
 	int		nb_count;
-	int		i;
 
 	nb_count = num_count(n);
 	str = (char *)malloc(sizeof(char) * (nb_count + 1));
 	if (!str)
 		return (NULL);
 	str[nb_count] = '\0';
-	i = 0;
 	if (n == (-2147483648LL))
 		ft_strlcpy(str, "-2147483648", 12);
 	else
