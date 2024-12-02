@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:38:49 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/02 11:04:52 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/02 14:15:00 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,29 +26,28 @@ char	*ft_get_strcat(char *s1, char *s2)
 /*
 	condition && (a || b) is useless, I just did it to silence Werror
 */
-void	ft_least_moves(int *a, int *b, int array_size)
+void	ft_least_moves(t_stack *stack)
 {
 	char	*commands;
 	char	*temp;
 
 	commands = ft_calloc(1, 1);
 	temp = NULL;
-	if (array_size == 2 && (a || b))
-		commands = ft_get_strcat(commands, ft_sa(a, array_size));
-	else if (array_size == 3)
+	if (stack->size == 2)
+		commands = ft_get_strcat(commands, ft_sa(stack));
+	else if (stack->size == 3)
 	{
-		temp = ft_case3(&a, array_size);
+		temp = ft_case3(stack);
 		commands = ft_get_strcat(commands, temp);
 		free(temp);
 	}
-	else if (array_size == 5)
+	else if (stack->size == 5)
 	{
-		temp = ft_case5(&a, &b, array_size);
+		temp = ft_case5(stack);
 		commands = temp;
-		ft_double_free(temp, b);
+		ft_double_free(temp, stack->b);
 	}
-	if (issorted(a, array_size))
+	if (issorted(stack->a, stack->size))
 		ft_printf("%s", commands);
-	// free(a);
 	free(commands);
 }

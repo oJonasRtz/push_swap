@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 10:49:18 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/02 11:11:54 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/02 14:05:22 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,31 +50,31 @@ int	get_smaller_num(int *n, int array_size)
 /*
 	Solves a array of 3 numbers
 */
-char	*ft_case3(int **a, int size)
+char	*ft_case3(t_stack *stack)
 {
 	char	*operations;
 	int		bigger_num;
 	int		smaller_num;
 
 	operations = ft_calloc (1, 1);
-	bigger_num = get_bigger_num(*a, size);
-	smaller_num = get_smaller_num(*a, size);
-	if (bigger_num == size - 1)
-		operations = ft_get_strcat(operations, ft_sa(*a, size));
-	else if (bigger_num == 0 && smaller_num == size - 1)
+	bigger_num = get_bigger_num(stack->a, stack->size);
+	smaller_num = get_smaller_num(stack->a, stack->size);
+	if (bigger_num == stack->size - 1)
+		operations = ft_get_strcat(operations, ft_sa(stack));
+	else if (bigger_num == 0 && smaller_num == stack->size - 1)
 	{
-			operations = ft_get_strcat(operations, ft_sa(*a, size));
-			operations = ft_get_strcat(operations, ft_rra(*a, size));
+			operations = ft_get_strcat(operations, ft_sa(stack));
+			operations = ft_get_strcat(operations, ft_rra(stack));
 	}
-	else if (bigger_num == 0 && smaller_num != size - 1)
-			operations = ft_get_strcat(operations, ft_ra(*a, size));
+	else if (bigger_num == 0 && smaller_num != stack->size - 1)
+			operations = ft_get_strcat(operations, ft_ra(stack));
 	else if (smaller_num == 0)
 	{
-		operations = ft_get_strcat(operations, ft_sa(*a, size));
-		operations = ft_get_strcat(operations, ft_ra(*a, size));
+		operations = ft_get_strcat(operations, ft_sa(stack));
+		operations = ft_get_strcat(operations, ft_ra(stack));
 	}
 	else
-		operations = ft_get_strcat(operations, ft_rra(*a, size));
+		operations = ft_get_strcat(operations, ft_rra(stack));
 	return (operations);
 }
 
@@ -115,13 +115,13 @@ char	*ft_case3(int **a, int size)
 	2.aplly case3 to stack a
 	3.solve the 	
 */
-char	*ft_case5(int **a, int **b, int size)
+char	*ft_case5(t_stack *stack)
 {
 	char	*operations;
 
 	operations = ft_calloc(1, 1);
-	operations = ft_get_strcat(operations, ft_pb(*a, *b, size));
-	operations = ft_get_strcat(operations, ft_pb(*a, *b, size));
-	operations = ft_case3(a, size);
+	operations = ft_get_strcat(operations, ft_pb(stack));
+	operations = ft_get_strcat(operations, ft_pb(stack));
+	operations = ft_case3(stack);
 	return (operations);
 }

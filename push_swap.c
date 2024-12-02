@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:42:42 by jopereir          #+#    #+#             */
-/*   Updated: 2024/11/28 14:14:39 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/02 13:52:53 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,16 @@
 
 int	main(int argc, char *argv[])
 {
-	int	*a;
-	int	*b;
-	int	size;
+	t_stack	stack;
 
 	if (argc <= 2 || already_sorted(&argv[1]))
 		exit (0);
 	if (!isalldigit(&argv[1]) || isduplicate(&argv[1])
 		|| islargerthan_limits(&argv[1]))
 		exit(ft_printf("Error\n"));
-	a = stack_init(argv, &size);
-	b = NULL;
-	ft_least_moves(a, b, size);
-	ft_double_free(a, b);
+	stack.a = stack_init(argv, &stack.size);
+	stack.b = NULL;
+	ft_least_moves(&stack);
+	ft_double_free(stack.a, stack.b);
 	return (0);
 }

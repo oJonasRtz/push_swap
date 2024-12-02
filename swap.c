@@ -6,19 +6,19 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 10:45:28 by jopereir          #+#    #+#             */
-/*   Updated: 2024/11/27 10:25:47 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/02 13:55:38 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_swap(int *n, int array_size)
+void	ft_swap(int **n, int array_size)
 {
 	int	temp;
 
 	if (array_size < 2)
 		return ;
-	temp = n[0];
-	n[0] = n[1];
-	n[1] = temp;
+	temp = (*n)[0];
+	(*n)[0] = (*n)[1];
+	(*n)[1] = temp;
 }
