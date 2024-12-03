@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 10:49:18 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/02 14:05:22 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/03 11:07:42 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,10 +118,13 @@ char	*ft_case3(t_stack *stack)
 char	*ft_case5(t_stack *stack)
 {
 	char	*operations;
+	char	*temp;
 
 	operations = ft_calloc(1, 1);
 	operations = ft_get_strcat(operations, ft_pb(stack));
 	operations = ft_get_strcat(operations, ft_pb(stack));
-	operations = ft_case3(stack);
+	temp = ft_case3(stack);
+	operations = ft_get_strcat(operations, temp);
+	
 	return (operations);
 }

@@ -6,14 +6,16 @@
 #    By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 11:11:14 by jopereir          #+#    #+#              #
-#    Updated: 2024/12/02 10:00:23 by jopereir         ###   ########.fr        #
+#    Updated: 2024/12/03 11:41:27 by jopereir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftpushswap.a
 
-SRC = swap.c ft_init.c push_swap_utils.c push.c rotate.c reverse_rotate.c \
+SRC_DIR = src
+SRCS = swap.c ft_init.c push_swap_utils.c push.c rotate.c reverse_rotate.c \
 		already_sorted.c operations.c ft_least_moves.c ft_solve.c operations2.c
+SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 OBJ = $(SRC:.c=.o)
 HEADER = include
 LIBFT = libft
@@ -24,7 +26,7 @@ PROGRAM = push_swap
 
 all: $(NAME)
 
-%.o: %.c
+$(SRC_DIR)/%.o: $(SRC_DIR)/%.c
 	@echo "Compiling $<"
 	@$(CC) $(CFLAGS) -c $< -o $@
 	
@@ -35,6 +37,9 @@ $(NAME): $(OBJ)
 	@mv libft.a $(NAME) 
 	@echo "Creating $(NAME)."
 	@ar rcs $(NAME) $(OBJ)
+	@echo "Compiling main"
+	@$(CC) $(CFLAGS) $(SRC_DIR)/push_swap.c -L. -lftpushswap -o $(PROGRAM)
+	@$(MAKE) clean
 
 clean:
 	@echo "Objects removed."
@@ -48,10 +53,5 @@ fclean: clean
 	@make -C $(LIBFT) fclean
 
 re: fclean all
-
-main: re
-	@echo "Compiling main"
-	@$(CC) $(CFLAGS) push_swap.c -L. -lftpushswap -o $(PROGRAM)
-	@$(MAKE) clean
 
 .PHONY: all clean fclean re
