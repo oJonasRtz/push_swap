@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 10:49:18 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/03 11:07:42 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/03 15:43:32 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,31 +100,40 @@ char	*ft_case3(t_stack *stack)
 // 	return (operations);
 // }
 
-// static char	*ft_double_push(int **a, int **b, int size)
-// {
-// 	char	*operations;
-
-// 	operations = ft_calloc (1, 1);
-// 	operations = ft_get_strcat(operations, ft_pb(*a, *b, size));
-// 	operations = ft_get_strcat(operations, ft_pb(*a, *b, size));
-// 	return (operations);
-// }
+static char	*ft_double_push(t_stack *stack)
+{
+	ft_pb(stack);
+	ft_pb(stack);
+	return ("pb\npb");
+}
 
 /*
 	1.move 2 number to stack b
 	2.aplly case3 to stack a
-	3.solve the 	
 */
 char	*ft_case5(t_stack *stack)
 {
 	char	*operations;
 	char	*temp;
+	int		i;
 
 	operations = ft_calloc(1, 1);
-	operations = ft_get_strcat(operations, ft_pb(stack));
-	operations = ft_get_strcat(operations, ft_pb(stack));
+	operations = ft_get_strcat(operations, ft_double_push(stack));
 	temp = ft_case3(stack);
 	operations = ft_get_strcat(operations, temp);
-	
+	operations = ft_get_strcat(operations, ft_pa(stack));
+	i = 0;
+	while (i < 2)
+	{
+		operations = ft_get_strcat(operations, ft_ra(stack));
+		if (i == 1)
+			operations = ft_get_strcat(operations, ft_double_push(stack));
+		else
+			operations = ft_get_strcat(operations, ft_pb(stack));
+		temp = ft_case3(stack);
+		operations = ft_get_strcat(operations, temp);
+		free(temp);
+		i++;
+	}
 	return (operations);
 }

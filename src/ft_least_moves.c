@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:38:49 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/03 11:00:05 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/03 15:23:49 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,9 @@ void	ft_least_moves(t_stack *stack)
 	else if (stack->size == 5)
 	{
 		temp = ft_case5(stack);
-		commands = temp;
-		ft_double_free(temp, stack->b);
+		commands = ft_get_strcat(commands, temp);
 	}
 	if (issorted(stack->a, stack->size))
 		ft_printf("%s", commands);
-	if (stack->size == 5)
-		free(stack->a);
 	free(commands);
 }

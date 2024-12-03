@@ -6,7 +6,7 @@
 #    By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 11:11:14 by jopereir          #+#    #+#              #
-#    Updated: 2024/12/03 11:41:27 by jopereir         ###   ########.fr        #
+#    Updated: 2024/12/03 14:47:56 by jopereir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,12 +35,12 @@ $(NAME): $(OBJ)
 	@make -C $(LIBFT)
 	@cp libft/libft.a .
 	@mv libft.a $(NAME) 
+	
 	@echo "Creating $(NAME)."
 	@ar rcs $(NAME) $(OBJ)
+	
 	@echo "Compiling main"
 	@$(CC) $(CFLAGS) $(SRC_DIR)/push_swap.c -L. -lftpushswap -o $(PROGRAM)
-	@$(MAKE) clean
-
 clean:
 	@echo "Objects removed."
 	@rm -f $(OBJ)
