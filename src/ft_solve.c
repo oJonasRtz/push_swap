@@ -21,17 +21,19 @@ char	*ft_case3(t_stack *stack)
 	int		bigger_num;
 	int		smaller_num;
 
+	if (issorted(stack->a, stack->size_a))
+		return (NULL);
 	operations = ft_calloc (1, 1);
-	bigger_num = get_bigger_num(stack->a, stack->size);
-	smaller_num = get_smaller_num(stack->a, stack->size);
-	if (bigger_num == stack->size - 1)
+	bigger_num = get_bigger_num(stack->a, stack->size_a);
+	smaller_num = get_smaller_num(stack->a, stack->size_a);
+	if (bigger_num == stack->size_a - 1)
 		operations = ft_get_strcat(operations, ft_sa(stack));
-	else if (bigger_num == 0 && smaller_num == stack->size - 1)
+	else if (bigger_num == 0 && smaller_num == stack->size_a - 1)
 	{
 			operations = ft_get_strcat(operations, ft_sa(stack));
 			operations = ft_get_strcat(operations, ft_rra(stack));
 	}
-	else if (bigger_num == 0 && smaller_num != stack->size - 1)
+	else if (bigger_num == 0 && smaller_num != stack->size_a - 1)
 			operations = ft_get_strcat(operations, ft_ra(stack));
 	else if (smaller_num == 0)
 	{
@@ -50,16 +52,39 @@ char	*ft_case3(t_stack *stack)
 	1 2
 	2 1
 */
-char	*ft_case2_reverse(t_stack *stack)
+// char	*ft_case2_reverse(t_stack *stack)
+// {
+// 	char	*operations;
+
+// 	operations = ft_calloc(1, 1);
+// 	if (stack->b[0] < stack->b[1])
+// 		operations = ft_get_strcat(operations, ft_sb(stack));
+// 	return (operations);
+// }	
+
+char	*move_smaller_to_b(t_stack *stack)
 {
+	int		smaller_index;
 	char	*operations;
 
 	operations = ft_calloc(1, 1);
-	if (stack->b[0] < stack->b[1])
-		operations = ft_get_strcat(operations, ft_sb(stack));
+	smaller_index = get_smaller_num(stack->a, stack->size_a);
+	if (smaller_index == 0)
+		operations = ft_get_strcat(operations, ft_pb(stack));
+	else if (smaller_index <= stack->size_a / 2)
+	{
+		while (smaller_index-- > 0)
+			operations = ft_get_strcat(operations, ft_ra(stack));
+		operations = ft_get_strcat(operations, ft_pb(stack));
+	}
+	else
+	{
+		while (smaller_index++ < stack->size_a)
+			operations = ft_get_strcat(operations, ft_rra(stack));
+		operations = ft_get_strcat(operations, ft_pb(stack));
+	}
 	return (operations);
-}	
-
+}
 
 /*
 	1.push the two smallest numbers to stack b
@@ -70,19 +95,13 @@ char	*ft_case2_reverse(t_stack *stack)
 char	*ft_case5(t_stack *stack)
 {
 	char	*operations;
+	char	*partially_sorted_operations;
 
-	if (!stack->b)
-		stack->b = ft_calloc(stack->size + 1, sizeof(int));
 	operations = ft_calloc(1, 1);
-
-	operations = ft_get_strcat2(operations, get_smallest_to_b(stack));
-	operations = ft_get_strcat2(operations, get_smallest_to_b(stack));
-
-	operations = ft_get_strcat2(operations, ft_case3(stack));
-
-	operations = ft_get_strcat2(operations, ft_case2_reverse(stack));
-	
-	operations = ft_get_strcat2(operations, ft_pa(stack));
-	operations = ft_get_strcat2(operations, ft_pa(stack));
+	partially_sorted_operations = partially_sorted(stack);
+	if (partially_sorted_operations)
+		operations = ft_get_strcat2(operations, partially_sorted_operations);
+	else
+		operations = ft_get_strcat2(operations, random_sort(stack));
 	return (operations);
 }

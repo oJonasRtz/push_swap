@@ -47,22 +47,61 @@ int	get_smaller_num(int *n, int array_size)
 	return (index);
 }
 
-char	*get_smallest_to_b(t_stack *stack)
+/*
+	calls a function 'n' times
+
+	_return is a flag to return the string or not
+*/
+char	*double_operation(t_stack *stack , char *(*f)(t_stack *), int n, int _return)
 {
-	int		smallest;
-	int		smallest_index;
+	int		i;
+	char	*operation;
+
+	operation = ft_calloc(1, 1);
+	i = 0;
+	while (i++ < n)
+		operation = ft_get_strcat(operation, f(stack));
+	if (_return)
+		return (operation);
+	else
+		return (ft_double_free(operation, NULL));
+}
+
+char	*partially_sorted(t_stack *stack)
+{
 	char	*operations;
 
 	operations = ft_calloc(1, 1);
-	smallest_index = get_smaller_num(stack->a, stack->size);
-	smallest = stack->a[smallest_index];
-	while (stack->a[0] != smallest)
+	double_operation(stack, &ft_pb, 2, 0);
+	if (issorted(stack->a, stack->size_a))
 	{
-		if (smallest_index < stack->size / 2)
-			operations = ft_get_strcat(operations, ft_ra(stack));
-		else
-			operations = ft_get_strcat(operations, ft_rra(stack));
+		double_operation(stack, &ft_pa, 2, 0);
+		operations = ft_get_strcat(operations, ft_sa(stack));
+		return (operations);
 	}
-	operations = ft_get_strcat(operations, ft_pb(stack));
+	double_operation(stack, &ft_pa, 2, 0);
+	operations = ft_get_strcat2(operations, double_operation(stack, &ft_rra, 2, 1));
+	operations = ft_get_strcat(operations, ft_sa(stack));
+	operations = ft_get_strcat2(operations, double_operation(stack, &ft_ra, 2, 1));
+	if (issorted(stack->a, stack->size_a))
+		return (operations);
+	return (ft_double_free(operations, NULL));
+}
+
+/*
+	1.Push the 2 smalest numbers to stack b
+	2.sort stack a with ft_case3
+	3.sort stack b to desceding order
+	4.push stack b numbers to a
+*/
+char	*random_sort(t_stack *stack)
+{
+	char	*operations;
+
+	operations = ft_calloc(1, 1);
+	operations = ft_get_strcat2(operations, move_smaller_to_b(stack));
+	operations = ft_get_strcat2(operations, move_smaller_to_b(stack));
+	operations = ft_get_strcat2(operations, ft_case3(stack));
+	operations = ft_get_strcat2(operations, double_operation(stack, &ft_pa, 2, 1));
 	return (operations);
 }

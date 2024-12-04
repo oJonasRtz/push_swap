@@ -14,18 +14,18 @@
 
 char	*ft_ra(t_stack *stack)
 {
-	ft_rotate(&stack->a, stack->size);
+	ft_rotate(&stack->a, stack->size_a);
 	return ("ra\n");
 }
 
 char	*ft_pb(t_stack *stack)
 {
-	ft_push(&stack->a, &stack->b, stack->size);
+	ft_push(&stack->a, &stack->b, &stack->size_a, &stack->size_b);
 	return ("pb\n");
 }
 
 char	*ft_pa(t_stack *stack)
 {
-	ft_push(&stack->b, &stack->a, stack->size);
+	ft_push(&stack->b, &stack->a, &stack->size_b, &stack->size_a);
 	return ("pa\n");
 }

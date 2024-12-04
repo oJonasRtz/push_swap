@@ -20,7 +20,8 @@ typedef struct s_stack
 {
 	int			*a;
 	int			*b;
-	int			size;
+	int			size_a;
+	int			size_b;
 }	t_stack;
 
 //	Initiate the stack
@@ -35,7 +36,7 @@ int		issorted(int *n, int array_size);
 
 //	Operations funtions
 void	ft_swap(int **n, int array_size);
-void	ft_push(int **src, int **dest, int array_size);
+void	ft_push(int **src, int **dest, int *src_size, int *dest_size);
 void	ft_rotate(int **n, int array_size);
 void	ft_reverse_rotate(int **n, int array_size);
 
@@ -45,7 +46,10 @@ int		get_bigger_num(int *n, int array_size);
 int		get_smaller_num(int *n, int array_size);
 char	*ft_get_strcat(char *s1, char *s2);
 char	*ft_get_strcat2(char *s1, char *s2);
-char	*get_smallest_to_b(t_stack *stack);
+char	*partially_sorted(t_stack *stack);
+char	*double_operation(t_stack *stack , char *(*f)(t_stack *), int n, int _return);
+char	*random_sort(t_stack *stack);
+char	*move_smaller_to_b(t_stack *stack);
 
 //	Operataions
 char	*ft_sa(t_stack *stack);

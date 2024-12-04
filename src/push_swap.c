@@ -37,8 +37,9 @@ int	main(int argc, char *argv[])
 	if (!isalldigit(&argv[1]) || isduplicate(&argv[1])
 		|| islargerthan_limits(&argv[1]))
 		exit(ft_printf("Error\n"));
-	stack.a = stack_init(argv, &stack.size);
+	stack.a = stack_init(argv, &stack.size_a);
 	stack.b = NULL;
+	stack.size_b = 0;
 	ft_least_moves(&stack);
 	ft_double_free(stack.a, stack.b);
 	return (0);

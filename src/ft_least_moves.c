@@ -43,13 +43,13 @@ void	ft_least_moves(t_stack *stack)
 	char	*operations;
 
 	operations = ft_calloc(1, 1);
-	if (stack->size == 2)
+	if (stack->size_a == 2)
 		operations = ft_get_strcat(operations, ft_sa(stack));
-	else if (stack->size == 3)
+	else if (stack->size_a== 3)
 		operations = ft_get_strcat2(operations, ft_case3(stack));
-	else if (stack->size == 5)
+	else if (stack->size_a == 5)
 		operations = ft_get_strcat2(operations, ft_case5(stack));
-	if (issorted(stack->a, stack->size))
+	if (issorted(stack->a, stack->size_a))
 		ft_printf("%s", operations);
 	free(operations);
 }

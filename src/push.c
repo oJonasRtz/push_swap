@@ -19,20 +19,21 @@
 	1 2 3
 	0 1 2 3
 */
-static void	ft_shift_right(int **n, int size)
+static void	ft_shift_right(int **n, int *size)
 {
 	int	*stack;
 	int	i;
 
-	stack = ft_calloc(size + 1, sizeof(int));
+	stack = ft_calloc(*size + 1, sizeof(int));
 	if (!stack)
 		return ;
-	i = size - 1;
+	i = *size - 1;
 	while (i >= 0)
 	{
 		stack[i + 1] = (*n)[i];
 		i--;
 	}
+	free(*n);
 	*n = stack;
 }
 
@@ -43,31 +44,37 @@ static void	ft_shift_right(int **n, int size)
 	1 2 3
 	2 3
 */
-static void	ft_shift_left(int **n, int size)
+static void	ft_shift_left(int **n, int *size)
 {
 	int	*stack;
 	int	i;
 
-	stack = ft_calloc(size - 1, sizeof(int));
+	stack = ft_calloc(*size - 1, sizeof(int));
 	if (!stack)
 		return ;
 	i = 0;
-	while (i < size - 1)
+	while (i < *size - 1)
 	{
 		stack[i] = (*n)[i + 1];
 		i++;
 	}
+	free(*n);
 	*n = stack;
 }
 
 /*
 	ft_printf("push\n"); for tests
 */
-void	ft_push(int **src, int **dest, int array_size)
+void	ft_push(int **src, int **dest, int *src_size, int *dest_size)
 {
-	if (array_size < 2 || !*src)
+	if (*src_size < 1 || !*src)
 		return ;
-	ft_shift_right(dest, array_size);
+	if (!*dest)
+		*dest = ft_calloc(*dest_size + 1, sizeof(int));
+	else
+		ft_shift_right(dest, dest_size);
+	(*dest_size)++;
 	(*dest)[0] = (*src)[0];
-	ft_shift_left(src, array_size);
+	ft_shift_left(src, src_size);
+	(*src_size)--;
 }

@@ -14,39 +14,39 @@
 
 char	*ft_ss(t_stack *stack)
 {
-	ft_swap(&stack->a, stack->size);
-	ft_swap(&stack->b, stack->size);
+	ft_swap(&stack->a, stack->size_a);
+	ft_swap(&stack->b, stack->size_b);
 	return ("ss\n");
 }
 
 char	*ft_rr(t_stack *stack)
 {
-	ft_rotate(&stack->a, stack->size);
-	ft_rotate(&stack->b, stack->size);
+	ft_rotate(&stack->a, stack->size_a);
+	ft_rotate(&stack->b, stack->size_b);
 	return ("rr\n");
 }
 
 char	*ft_rrr(t_stack *stack)
 {
-	ft_reverse_rotate(&stack->a, stack->size);
-	ft_reverse_rotate(&stack->b, stack->size);
+	ft_reverse_rotate(&stack->a, stack->size_a);
+	ft_reverse_rotate(&stack->b, stack->size_b);
 	return ("rrr\n");
 }
 
 char	*ft_sa(t_stack *stack)
 {
-	ft_swap(&stack->a, stack->size);
+	ft_swap(&stack->a, stack->size_a);
 	return ("sa\n");
 }
 
 char	*ft_sb(t_stack *stack)
 {
-	ft_swap(&stack->b, stack->size);
+	ft_swap(&stack->b, stack->size_b);
 	return ("sb\n");
 }	
 
 char	*ft_rra(t_stack *stack)
 {
-	ft_reverse_rotate(&stack->a, stack->size);
+	ft_reverse_rotate(&stack->a, stack->size_a);
 	return ("rra\n");
 }
