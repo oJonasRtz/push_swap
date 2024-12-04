@@ -40,5 +40,6 @@ int	main(int argc, char *argv[])
 	stack.a = stack_init(argv, &stack.size);
 	stack.b = NULL;
 	ft_least_moves(&stack);
+	ft_double_free(stack.a, stack.b);
 	return (0);
 }

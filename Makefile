@@ -14,7 +14,8 @@ NAME = libftpushswap.a
 
 SRC_DIR = src
 SRCS = swap.c ft_init.c push_swap_utils.c push.c rotate.c reverse_rotate.c \
-		already_sorted.c operations.c ft_least_moves.c ft_solve.c operations2.c
+		already_sorted.c operations.c ft_least_moves.c ft_solve.c operations2.c \
+		ft_solve_utils.c
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 OBJ = $(SRC:.c=.o)
 HEADER = include

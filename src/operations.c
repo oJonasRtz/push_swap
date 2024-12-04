@@ -39,6 +39,12 @@ char	*ft_sa(t_stack *stack)
 	return ("sa\n");
 }
 
+char	*ft_sb(t_stack *stack)
+{
+	ft_swap(&stack->b, stack->size);
+	return ("sb\n");
+}	
+
 char	*ft_rra(t_stack *stack)
 {
 	ft_reverse_rotate(&stack->a, stack->size);

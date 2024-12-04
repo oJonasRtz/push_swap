@@ -18,9 +18,9 @@
 
 typedef struct s_stack
 {
-	int	*a;
-	int	*b;
-	int	size;
+	int			*a;
+	int			*b;
+	int			size;
 }	t_stack;
 
 //	Initiate the stack
@@ -39,20 +39,23 @@ void	ft_push(int **src, int **dest, int array_size);
 void	ft_rotate(int **n, int array_size);
 void	ft_reverse_rotate(int **n, int array_size);
 
-//	Solve
+//	Solve utils
 void	ft_least_moves(t_stack *stack);
 int		get_bigger_num(int *n, int array_size);
 int		get_smaller_num(int *n, int array_size);
 char	*ft_get_strcat(char *s1, char *s2);
+char	*ft_get_strcat2(char *s1, char *s2);
+char	*get_smallest_to_b(t_stack *stack);
 
 //	Operataions
 char	*ft_sa(t_stack *stack);
+char	*ft_sb(t_stack *stack);
 char	*ft_rra(t_stack *stack);
 char	*ft_ra(t_stack *stack);
 char	*ft_pb(t_stack *stack);
 char	*ft_pa(t_stack *stack);
 
-//	Cases funtions
+//	Cases functions
 char	*ft_case3(t_stack *stack);
 char	*ft_case5(t_stack *stack);
 

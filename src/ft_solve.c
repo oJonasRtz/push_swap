@@ -13,41 +13,6 @@
 #include "push_swap.h"
 
 /*
-	Returns the index of the biggest number
-*/
-int	get_bigger_num(int *n, int array_size)
-{
-	int	i;
-	int	index;
-
-	index = 0;
-	i = 1;
-	while (i < array_size)
-	{
-		if (n[i] > n[index])
-			index = i;
-		i++;
-	}
-	return (index);
-}
-
-int	get_smaller_num(int *n, int array_size)
-{
-	int	i;
-	int	index;
-
-	index = 0;
-	i = 1;
-	while (i < array_size)
-	{
-		if (n[i] < n[index])
-			index = i;
-		i++;
-	}
-	return (index);
-}
-
-/*
 	Solves a array of 3 numbers
 */
 char	*ft_case3(t_stack *stack)
@@ -78,62 +43,46 @@ char	*ft_case3(t_stack *stack)
 	return (operations);
 }
 
-// static char	*ft_case5_helper(int *a, int *b, int size)
-// {
-// 	char	*operations;
-// 	char	*temp;
-// 	int		bigger_num;
-// 	int		smaller_num;
+/*
+	sort stack b in reverse order
+	ex:
 
-// 	operations = ft_calloc (1, 1);
-// 	bigger_num = get_bigger_num(a, size);
-// 	smaller_num = get_smaller_num(a, size);
-// 	operations = ft_get_strcat(operations, ft_ra(a, size));
-// 	if (!issorted(a, size))
-// 	{
-// 		operations = ft_get_strcat(operations, ft_pb(a, b, size));
-// 		temp = ft_case3(&a, size);
-// 		operations = ft_get_strcat(operations, temp);
-// 		free(temp);
-// 		operations = ft_get_strcat(operations, ft_pa(a, b, size));
-// 	}
-// 	return (operations);
-// }
-
-static char	*ft_double_push(t_stack *stack)
+	1 2
+	2 1
+*/
+char	*ft_case2_reverse(t_stack *stack)
 {
-	ft_pb(stack);
-	ft_pb(stack);
-	return ("pb\npb");
-}
+	char	*operations;
+
+	operations = ft_calloc(1, 1);
+	if (stack->b[0] < stack->b[1])
+		operations = ft_get_strcat(operations, ft_sb(stack));
+	return (operations);
+}	
+
 
 /*
-	1.move 2 number to stack b
-	2.aplly case3 to stack a
+	1.push the two smallest numbers to stack b
+	2.aplly case 3 to stack a
+	3.sort stack b in reverse order
+	4.push the two numbers from stack b to stack a
 */
 char	*ft_case5(t_stack *stack)
 {
 	char	*operations;
-	char	*temp;
-	int		i;
 
+	if (!stack->b)
+		stack->b = ft_calloc(stack->size + 1, sizeof(int));
 	operations = ft_calloc(1, 1);
-	operations = ft_get_strcat(operations, ft_double_push(stack));
-	temp = ft_case3(stack);
-	operations = ft_get_strcat(operations, temp);
-	operations = ft_get_strcat(operations, ft_pa(stack));
-	i = 0;
-	while (i < 2)
-	{
-		operations = ft_get_strcat(operations, ft_ra(stack));
-		if (i == 1)
-			operations = ft_get_strcat(operations, ft_double_push(stack));
-		else
-			operations = ft_get_strcat(operations, ft_pb(stack));
-		temp = ft_case3(stack);
-		operations = ft_get_strcat(operations, temp);
-		free(temp);
-		i++;
-	}
+
+	operations = ft_get_strcat2(operations, get_smallest_to_b(stack));
+	operations = ft_get_strcat2(operations, get_smallest_to_b(stack));
+
+	operations = ft_get_strcat2(operations, ft_case3(stack));
+
+	operations = ft_get_strcat2(operations, ft_case2_reverse(stack));
+	
+	operations = ft_get_strcat2(operations, ft_pa(stack));
+	operations = ft_get_strcat2(operations, ft_pa(stack));
 	return (operations);
 }

@@ -23,30 +23,33 @@ char	*ft_get_strcat(char *s1, char *s2)
 	return (s);
 }
 
+char	*ft_get_strcat2(char *s1, char *s2)
+{
+	char	*s;
+
+	s = ft_strjoin(s1, s2);
+	if (!s)
+		return (NULL);
+	free(s1);
+	free(s2);
+	return (s);
+}
+
 /*
 	condition && (a || b) is useless, I just did it to silence Werror
 */
 void	ft_least_moves(t_stack *stack)
 {
-	char	*commands;
-	char	*temp;
+	char	*operations;
 
-	commands = ft_calloc(1, 1);
-	temp = NULL;
+	operations = ft_calloc(1, 1);
 	if (stack->size == 2)
-		commands = ft_get_strcat(commands, ft_sa(stack));
+		operations = ft_get_strcat(operations, ft_sa(stack));
 	else if (stack->size == 3)
-	{
-		temp = ft_case3(stack);
-		commands = ft_get_strcat(commands, temp);
-		free(temp);
-	}
+		operations = ft_get_strcat2(operations, ft_case3(stack));
 	else if (stack->size == 5)
-	{
-		temp = ft_case5(stack);
-		commands = ft_get_strcat(commands, temp);
-	}
+		operations = ft_get_strcat2(operations, ft_case5(stack));
 	if (issorted(stack->a, stack->size))
-		ft_printf("%s", commands);
-	free(commands);
+		ft_printf("%s", operations);
+	free(operations);
 }

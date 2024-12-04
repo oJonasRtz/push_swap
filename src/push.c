@@ -24,8 +24,6 @@ static void	ft_shift_right(int **n, int size)
 	int	*stack;
 	int	i;
 
-	if (!(*n))
-		*n = ft_calloc(size, sizeof(int));
 	stack = ft_calloc(size + 1, sizeof(int));
 	if (!stack)
 		return ;
