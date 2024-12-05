@@ -6,26 +6,36 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 11:32:23 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/02 14:13:59 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/05 12:07:25 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	*ft_ra(t_stack *stack)
+void	ft_ra(t_stack *stack, int flag)
 {
 	ft_rotate(&stack->a, stack->size_a);
-	return ("ra\n");
+	if (flag)
+		ft_printf("ra\n");
 }
 
-char	*ft_pb(t_stack *stack)
+void	ft_pb(t_stack *stack, int flag)
 {
 	ft_push(&stack->a, &stack->b, &stack->size_a, &stack->size_b);
-	return ("pb\n");
+	if (flag)
+		ft_printf("pb\n");
 }
 
-char	*ft_pa(t_stack *stack)
+void	ft_pa(t_stack *stack, int flag)
 {
 	ft_push(&stack->b, &stack->a, &stack->size_b, &stack->size_a);
-	return ("pa\n");
+	if (flag)
+		ft_printf("pa\n");
+}
+
+void	ft_rra(t_stack *stack, int flag)
+{
+	ft_reverse_rotate(&stack->a, stack->size_a);
+	if (flag)
+		ft_printf("rra\n");
 }

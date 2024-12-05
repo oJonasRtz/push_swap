@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:49:58 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/02 14:07:55 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/05 13:23:16 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,23 +44,21 @@ void	ft_reverse_rotate(int **n, int array_size);
 void	ft_least_moves(t_stack *stack);
 int		get_bigger_num(int *n, int array_size);
 int		get_smaller_num(int *n, int array_size);
-char	*ft_get_strcat(char *s1, char *s2);
-char	*ft_get_strcat2(char *s1, char *s2);
-char	*partially_sorted(t_stack *stack);
-char	*double_operation(t_stack *stack , char *(*f)(t_stack *), int n, int _return);
-char	*random_sort(t_stack *stack);
-char	*move_smaller_to_b(t_stack *stack);
+int		partially_sorted(t_stack *stack);
+void	double_operation(t_stack *stack,
+			void (*f)(t_stack *, int), int n, int flag);
+void	random_sort(t_stack *stack);
+void	move_smaller_to_b(t_stack *stack, int flag);
 
 //	Operataions
-char	*ft_sa(t_stack *stack);
-char	*ft_sb(t_stack *stack);
-char	*ft_rra(t_stack *stack);
-char	*ft_ra(t_stack *stack);
-char	*ft_pb(t_stack *stack);
-char	*ft_pa(t_stack *stack);
+void	ft_sa(t_stack *stack, int flag);
+void	ft_sb(t_stack *stack, int flag);
+void	ft_rra(t_stack *stack, int flag);
+void	ft_ra(t_stack *stack, int flag);
+void	ft_pb(t_stack *stack, int flag);
+void	ft_pa(t_stack *stack, int flag);
 
 //	Cases functions
-char	*ft_case3(t_stack *stack);
-char	*ft_case5(t_stack *stack);
+void	ft_case3(t_stack *stack);
 
 #endif

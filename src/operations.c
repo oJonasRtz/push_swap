@@ -6,47 +6,46 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 14:55:19 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/02 14:13:26 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/05 12:06:45 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	*ft_ss(t_stack *stack)
+void	ft_ss(t_stack *stack, int flag)
 {
 	ft_swap(&stack->a, stack->size_a);
 	ft_swap(&stack->b, stack->size_b);
-	return ("ss\n");
+	if (flag)
+		ft_printf("ss\n");
 }
 
-char	*ft_rr(t_stack *stack)
+void	ft_rr(t_stack *stack, int flag)
 {
 	ft_rotate(&stack->a, stack->size_a);
 	ft_rotate(&stack->b, stack->size_b);
-	return ("rr\n");
+	if (flag)
+		ft_printf("rr\n");
 }
 
-char	*ft_rrr(t_stack *stack)
+void	ft_rrr(t_stack *stack, int flag)
 {
 	ft_reverse_rotate(&stack->a, stack->size_a);
 	ft_reverse_rotate(&stack->b, stack->size_b);
-	return ("rrr\n");
+	if (flag)
+		ft_printf("rrr\n");
 }
 
-char	*ft_sa(t_stack *stack)
+void	ft_sa(t_stack *stack, int flag)
 {
 	ft_swap(&stack->a, stack->size_a);
-	return ("sa\n");
+	if (flag)
+		ft_printf("sa\n");
 }
 
-char	*ft_sb(t_stack *stack)
+void	ft_sb(t_stack *stack, int flag)
 {
 	ft_swap(&stack->b, stack->size_b);
-	return ("sb\n");
-}	
-
-char	*ft_rra(t_stack *stack)
-{
-	ft_reverse_rotate(&stack->a, stack->size_a);
-	return ("rra\n");
+	if (flag)
+		ft_printf("sb\n");
 }
