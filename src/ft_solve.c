@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 10:49:18 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/05 15:15:20 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:51:05 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,11 @@ void	move_smaller_to_top(t_stack *stack, int flag)
 	}
 }
 
+static void	solve_stack(t_stack *stack)
+{
+	partially_sorted(stack);
+}
+
 /*
 	1.Push the 2 smalest numbers to stack b
 	2.sort stack a with ft_case3
@@ -97,7 +102,15 @@ void	move_smaller_to_top(t_stack *stack, int flag)
 */
 void	random_sort(t_stack *stack)
 {
+	int	half;
+
 	if (partially_sorted(stack))
 		return ;
-	ps_quicksort(stack, 1);
+	half = stack->size_a / 2;
+	double_operation(stack, &move_smaller_to_b, half, 1);
+	if (stack->size_a == 3)
+		ft_case3(stack);
+	else
+		solve_stack(stack);
+	double_operation(stack, &ft_pa, half, 1);
 }

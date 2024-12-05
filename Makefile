@@ -6,7 +6,7 @@
 #    By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 11:11:14 by jopereir          #+#    #+#              #
-#    Updated: 2024/12/05 15:44:45 by jopereir         ###   ########.fr        #
+#    Updated: 2024/12/05 15:51:33 by jopereir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = libftpushswap.a
 SRC_DIR = src
 SRCS = swap.c ft_init.c push_swap_utils.c push.c rotate.c reverse_rotate.c \
 		already_sorted.c operations.c ft_least_moves.c ft_solve.c operations2.c \
-		ft_solve_utils.c ps_quicksort.c
+		ft_solve_utils.c
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 OBJ = $(SRC:.c=.o)
 HEADER = include
