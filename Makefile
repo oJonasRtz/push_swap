@@ -6,7 +6,7 @@
 #    By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 11:11:14 by jopereir          #+#    #+#              #
-#    Updated: 2024/12/03 14:47:56 by jopereir         ###   ########.fr        #
+#    Updated: 2024/12/05 15:44:45 by jopereir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = libftpushswap.a
 SRC_DIR = src
 SRCS = swap.c ft_init.c push_swap_utils.c push.c rotate.c reverse_rotate.c \
 		already_sorted.c operations.c ft_least_moves.c ft_solve.c operations2.c \
-		ft_solve_utils.c
+		ft_solve_utils.c ps_quicksort.c
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 OBJ = $(SRC:.c=.o)
 HEADER = include
@@ -35,13 +35,13 @@ $(SRC_DIR)/%.o: $(SRC_DIR)/%.c
 $(NAME): $(OBJ)
 	@make -C $(LIBFT)
 	@cp libft/libft.a .
-	@mv libft.a $(NAME) 
-	
+	@mv libft.a $(NAME)
+
 	@echo "Creating $(NAME)."
 	@ar rcs $(NAME) $(OBJ)
 	
 	@echo "Compiling main"
-	@$(CC) $(CFLAGS) $(SRC_DIR)/push_swap.c -L. -lftpushswap -o $(PROGRAM)
+	@$(CC) $(CFLAGS) $(SRC_DIR)/push_swap.c -L. -lftpushswap -L$(LIBFT) -lft -o $(PROGRAM)	
 clean:
 	@echo "Objects removed."
 	@rm -f $(OBJ)

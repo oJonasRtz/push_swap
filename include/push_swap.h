@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:49:58 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/05 13:23:16 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:13:25 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void	double_operation(t_stack *stack,
 			void (*f)(t_stack *, int), int n, int flag);
 void	random_sort(t_stack *stack);
 void	move_smaller_to_b(t_stack *stack, int flag);
+void	move_smaller_to_top(t_stack *stack, int flag);
+void	ps_quicksort(t_stack *stack, int flag);
 
 //	Operataions
 void	ft_sa(t_stack *stack, int flag);
