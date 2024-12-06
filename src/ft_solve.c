@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 10:49:18 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/05 15:51:05 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/06 12:21:53 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,23 @@ void	move_smaller_to_top(t_stack *stack, int flag)
 	}
 }
 
-static void	solve_stack(t_stack *stack)
+static void	solve_stack(t_stack *stack, int *a, int i)
 {
-	partially_sorted(stack);
+	int	smaller;
+
+	smaller = get_smaller_num(a, stack->size_a);
+	if (smaller != 0)
+	{
+		if (smaller <= stack->size_a / 2)
+			while (smaller-- > 0)
+				ft_ra(stack, 1);
+		else
+			while (smaller++ < stack->size_a)
+				ft_rra(stack, 1);
+	}
+	if (i < stack->size_a)
+		solve_stack(stack, &stack->a[i], i + 1);
+	return ;
 }
 
 /*
@@ -102,7 +116,7 @@ static void	solve_stack(t_stack *stack)
 */
 void	random_sort(t_stack *stack)
 {
-	int	half;
+	int			half;
 
 	if (partially_sorted(stack))
 		return ;
@@ -111,6 +125,6 @@ void	random_sort(t_stack *stack)
 	if (stack->size_a == 3)
 		ft_case3(stack);
 	else
-		solve_stack(stack);
+		solve_stack(stack, stack->a, 0);
 	double_operation(stack, &ft_pa, half, 1);
 }

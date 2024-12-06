@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:49:58 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/05 15:47:20 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/06 12:48:14 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct s_stack
 }	t_stack;
 
 //	Initiate the stack
-int		*stack_init(char **s, int *size);
+int		*stack_init(char *s, int *size);
 
 //	Check funtions
 int		isalldigit(char **s);
