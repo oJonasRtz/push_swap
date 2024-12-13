@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:02:13 by jopereir          #+#    #+#             */
-/*   Updated: 2024/11/28 15:38:45 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/12 11:18:54 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,13 @@ int	isduplicate(char **s)
 
 int	islargerthan_limits(char **s)
 {
-	int		i;
-	long	num;
+	int	i;
+	int	num;
 
 	i = 0;
 	while (s[i])
 	{
-		num = (long)ft_atoi(s[i]);
+		num = ft_atoi(s[i]);
 		if ((num == INT_MAX && ft_strncmp(s[i], "2147483647", 11) != 0)
 			|| (num == INT_MIN && ft_strncmp(s[i], "-2147483648", 12) != 0))
 			return (1);

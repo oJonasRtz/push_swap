@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:42:42 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/06 13:00:09 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/10 15:13:19 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ int	main(int argc, char *argv[])
 	stack.b = NULL;
 	stack.size_b = 0;
 	ft_least_moves(&stack);
-	ft_double_free(stack.a, stack.b);
+	ft_double_free(stack.a, NULL);
 	return (0);
 }
