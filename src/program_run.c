@@ -51,7 +51,11 @@ int	program_execute(t_stack *stack)
 		ft_case3(stack);
 	else
 		random_sort(stack);
+	
+	//Essas duas linhas devem ser apagadas antes de enviar o projeto pra avaliação
 	show_stack(stack);
+	ft_printf("Size_a: %d Size_b: %d\n", stack->size_a, stack->size_b);
+
 	program_destroy(stack, NULL);
 	return (1);
 }

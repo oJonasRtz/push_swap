@@ -12,22 +12,6 @@
 
 #include "push_swap.h"
 
-// /*
-// 	ft_print_graph is a temporary funtion for tests
-// */
-// static void	ft_print_graph(int *a, int *b, int size)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	ft_printf("a  b\n----\n");
-// 	while (i < size)
-// 	{
-// 		ft_printf("%d  %d\n", a[i], b[i]);
-// 		i++;
-// 	}
-// }
-
 int	main(int argc, char *argv[])
 {
 	t_stack	stack;

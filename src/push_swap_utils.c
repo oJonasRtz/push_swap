@@ -19,8 +19,10 @@ static int	isalldigit(char *s)
 	i = 0;
 	while (s[i])
 	{
-		if (!ft_isdigit(s[i]) && (s[i] != ' '))
+		if (!ft_isdigit(s[i]) && (s[i] != ' ') && s[i] != '-'){
+			ft_printf("digit\n");
 			return (0);
+		}
 		i++;
 	}
 	return (1);
@@ -49,6 +51,10 @@ static int	isduplicate(char *s)
 	return (0);
 }
 
+/*
+	ft_atoi returns the INT_MAX if the values pass it, so the function
+		must verify if the string and the value are equals
+*/
 static int	islargerthan_limits(char *s, t_stack *stack)
 {
 	int		i;
