@@ -18,20 +18,20 @@
 
 typedef struct s_stack
 {
-	int			*a;
-	int			*b;
-	int			size_a;
-	int			size_b;
+	int	*a;
+	int	*b;
+	int	size_a;
+	int	size_b;
+	int	ocnt;	
 }	t_stack;
 
 //	Initiate the stack
-void	stack_init(char *s, t_stack *stack);
+void	stack_init(char **s, t_stack *stack);
 
 //	Check funtions
 void	free_split(char **split);
-int		validate_stack(t_stack *stack, char *argv);
+int		validate_stack(t_stack *stack, char **argv);
 int		already_sorted(t_stack *stack);
-int		issorted(int *n, int array_size);
 
 //	Operations funtions
 void	ft_swap(int **n, int array_size);
@@ -45,23 +45,28 @@ int		get_smaller_num(int *n, int array_size);
 int		partially_sorted(t_stack *stack);
 void	double_operation(t_stack *stack,
 			void (*f)(t_stack *, int), int n, int flag);
-void	random_sort(t_stack *stack);
 void	move_smaller_to_b(t_stack *stack, int flag);
 void	move_smaller_to_top(t_stack *stack, int flag);
 
 //	Operataions
 void	ft_sa(t_stack *stack, int flag);
 void	ft_sb(t_stack *stack, int flag);
+void	ft_ss(t_stack *stack, int flag);
 void	ft_rra(t_stack *stack, int flag);
+void	ft_rrb(t_stack *stack, int flag);
+void	ft_rrr(t_stack *stack, int flag);
 void	ft_ra(t_stack *stack, int flag);
+void    ft_rb(t_stack *stack, int flag);
+void	ft_rr(t_stack *stack, int flag);
 void	ft_pb(t_stack *stack, int flag);
 void	ft_pa(t_stack *stack, int flag);
 
 //	Cases functions
 void	ft_case3(t_stack *stack);
+void	ft_case5(t_stack *stack);
 
 //	Program run
-int		program_create(char *argv, t_stack *stack);
+int		program_create(char **argv, t_stack *stack);
 int		program_execute(t_stack *stack);
 int		program_destroy(t_stack *stack, char *message);
 

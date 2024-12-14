@@ -12,52 +12,12 @@
 
 #include "push_swap.h"
 
-void	ft_ra(t_stack *stack, int flag)
+void    ft_rb(t_stack *stack, int flag)
 {
-	ft_rotate(&stack->a, stack->size_a);
-	if (flag)
-	{
-		stack->ocnt++;
-		ft_printf("ra\n");
-	}
-}
-
-void	ft_pb(t_stack *stack, int flag)
-{
-	ft_push(&stack->a, &stack->b, &stack->size_a, &stack->size_b);
-	if (flag)
-	{
-		stack->ocnt++;
-		ft_printf("pb\n");
-	}
-}
-
-void	ft_pa(t_stack *stack, int flag)
-{
-	ft_push(&stack->b, &stack->a, &stack->size_b, &stack->size_a);
-	if (flag)
-	{
-		stack->ocnt++;
-		ft_printf("pa\n");
-	}
-}
-
-void	ft_rra(t_stack *stack, int flag)
-{
-	ft_reverse_rotate(&stack->a, stack->size_a);
-	if (flag)
-	{
-		stack->ocnt++;
-		ft_printf("rra\n");
-	}
-}
-
-void	ft_rrb(t_stack *stack, int flag)
-{
-	ft_reverse_rotate(&stack->b, stack->size_b);
-	if (flag)
-	{
-		stack->ocnt++;
-		ft_printf("rrb\n");
-	}
+    ft_rotate(&stack->b, stack->size_b);
+    if (flag)
+    {
+        stack->ocnt++;
+        ft_printf("rb\n");
+    }
 }

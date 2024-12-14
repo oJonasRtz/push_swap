@@ -25,29 +25,46 @@ void	free_split(char **split)
 	free(split);
 }
 
-void	stack_init(char *s, t_stack *stack)
+void	stack_init(char **s, t_stack *stack)
 {
-	char	**split;
-	int		i;
+	int	i;
 
-	split = ft_split(s, ' ');
-	if (!split)
-		return ;
 	i = 0;
-	while (split[i])
+	while (s[i])
 		i++;
 	stack->size_a = i;
 	stack->a = ft_calloc(i, sizeof(int));
-	if (!stack->a)
-	{
-		free_split(split);
-		return ;
-	}
 	i = 0;
-	while (split[i])
+	while (s[i])
 	{
-		stack->a[i] = ft_atoi(split[i]);
+		stack->a[i] = ft_atoi(s[i]);
 		i++;
 	}
-	free_split(split);
 }
+
+// void	stack_init(char *s, t_stack *stack)
+// {
+// 	char	**split;
+// 	int		i;
+
+// 	split = ft_split(s, ' ');
+// 	if (!split)
+// 		return ;
+// 	i = 0;
+// 	while (split[i])
+// 		i++;
+// 	stack->size_a = i;
+// 	stack->a = ft_calloc(i, sizeof(int));
+// 	if (!stack->a)
+// 	{
+// 		free_split(split);
+// 		return ;
+// 	}
+// 	i = 0;
+// 	while (split[i])
+// 	{
+// 		stack->a[i] = ft_atoi(split[i]);
+// 		i++;
+// 	}
+// 	free_split(split);
+// }

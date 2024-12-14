@@ -18,6 +18,6 @@ int	main(int argc, char *argv[])
 
 	if (argc != 2)
 		exit (0);
-	program_create(argv[1], &stack);
+	program_create(argv, &stack);
 	return (0);
 }

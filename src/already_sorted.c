@@ -47,19 +47,3 @@ int	already_sorted(t_stack *stack)
 	free(temp);
 	return (1);
 }
-
-int	issorted(int *n, int array_size)
-{
-	int	i;
-
-	if (!n)
-		return (0);
-	i = 1;
-	while (i < array_size)
-	{
-		if (n[i] < n[i - 1])
-			return (0);
-		i++;
-	}
-	return (1);
-}

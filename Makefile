@@ -13,9 +13,9 @@
 NAME = push_swap
 
 SRC_DIR = src
-SRCS = swap.c ft_init.c push_swap_utils.c push.c rotate.c reverse_rotate.c \
+SRCS = swap.c ft_init.c validation.c push.c rotate.c reverse_rotate.c \
 		already_sorted.c operations.c ft_solve.c operations2.c \
-		ft_solve_utils.c program_run.c
+		ft_solve_utils.c events.c
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 OBJ = $(SRC:.c=.o)
 HEADER = include

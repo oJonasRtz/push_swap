@@ -69,7 +69,7 @@ void	double_operation(t_stack *stack,
 int	partially_sorted(t_stack *stack)
 {
 	double_operation(stack, &ft_pb, 2, 0);
-	if (issorted(stack->a, stack->size_a))
+	if (already_sorted(stack))
 	{
 		double_operation(stack, &ft_pa, 2, 0);
 		ft_sa(stack, 1);
@@ -79,8 +79,8 @@ int	partially_sorted(t_stack *stack)
 	double_operation(stack, &ft_rra, 2, 0);
 	ft_sa(stack, 0);
 	double_operation(stack, &ft_ra, 2, 0);
-	if (issorted(stack->a, stack->size_a))
-		ft_printf("rra\nrra\nsa\nra\nra");
+	if (already_sorted(stack))
+		ft_printf("rra\nrra\nsa\nra\nra\n");
 	else
 	{
 		double_operation(stack, &ft_rra, 2, 0);
@@ -90,7 +90,7 @@ int	partially_sorted(t_stack *stack)
 		ft_sa(stack, 1);
 		ft_ra(stack, 1);
 	}
-	if (issorted(stack->a, stack->size_a))
+	if (already_sorted(stack))
 		return (1);
 	return (0);
 }
