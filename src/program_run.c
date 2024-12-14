@@ -12,17 +12,58 @@
 
 #include "push_swap.h"
 
+static void	set_null(t_stack *stack)
+{
+	stack->a = NULL;
+	stack->b = NULL;
+	stack->size_a = 0;
+	stack->size_b = 0;
+}
+
+static void	show_stack(t_stack *stack)
+{
+	int	i;
+
+	i = 0;
+	ft_printf("Stack A: ");
+	while (i < stack->size_a)
+		ft_printf("%d ", stack->a[i++]);
+	ft_printf("\n");
+}
+
 int	program_create(char *argv, t_stack *stack)
 {
+	set_null(stack);
+	stack_init(argv, stack);
+	if (!stack->a)
+		program_destroy(stack, "Error: stack_init failed");
+	if (!validate_stack(stack, argv))
+		program_destroy(stack, "Error: validate_stack failed");
+	program_execute(stack);
 	return (1);
 }
 
 int	program_execute(t_stack *stack)
 {
+	if (stack->size_a == 2)
+		ft_sa(stack, 1);
+	else if (stack->size_a == 3)
+		ft_case3(stack);
+	else
+		random_sort(stack);
+	show_stack(stack);
+	program_destroy(stack, NULL);
 	return (1);
 }
 
-int	program_destroy(t_stack *stack)
+int	program_destroy(t_stack *stack, char *message)
 {
+	if (stack->a)
+		free(stack->a);
+	if (stack->b)
+		free(stack->b);
+	set_null(stack);
+	if (message)
+		ft_printf("%s\n", message);
 	exit(0);
 }

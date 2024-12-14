@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 10:40:31 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/06 12:43:05 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:22:32 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ static int	is_sign(char c)
 
 static int	is_overflow(int result, char c)
 {
-	return (result > __INT_MAX__ / 10 || (result == __INT_MAX__
-			&& c > __INT_MAX__ % 10));
+	return (result > INT_MAX / 10 || (result == INT_MAX
+			&& c > INT_MAX % 10));
 }
 
 int	ft_atoi(const char *nptr)
@@ -53,8 +53,8 @@ int	ft_atoi(const char *nptr)
 		if (is_overflow(result, nptr[i]))
 		{
 			if (sign > 0)
-				return (__INT_MAX__);
-			return (INT32_MIN);
+				return (INT_MAX);
+			return (INT_MIN);
 		}
 		result = result * 10 + (nptr[i++] - '0');
 	}

@@ -12,43 +12,42 @@
 
 #include "push_swap.h"
 
-int	*stack_init(char **s, int *size)
+void	free_split(char **split)
 {
-	int	*stack;
 	int	i;
-	int	j;
 
-	i = 1;
-	while (s[i])
+	i = 0;
+	while (split[i])
+	{
+		free(split[i]);
 		i++;
-	*size = i - 1;
-	stack = ft_calloc(i, sizeof(int));
-	if (!stack)
-		return (NULL);
-	i = 1;
-	j = 0;
-	while (s[i])
-		stack[j++] = ft_atoi(s[i++]);
-	return (stack);
+	}
+	free(split);
 }
 
-// int	*stack_init(char *s, int *size)
-// {
-// 	int		*stack;
-// 	char	**split;
-// 	int		i;
+void	stack_init(char *s, t_stack *stack)
+{
+	char	**split;
+	int		i;
 
-// 	split = ft_split(s, ' ');
-// 	i = 0;
-// 	while (split[i])
-// 		i++;
-// 	*size = i;
-// 	stack = ft_calloc(i, sizeof(int));
-// 	i = 0;
-// 	while (split[i])
-// 	{
-// 		stack[i] = ft_atoi(split[i]);
-// 		i++;
-// 	}
-// 	return (stack);
-// }
+	split = ft_split(s, ' ');
+	if (!split)
+		return ;
+	i = 0;
+	while (split[i])
+		i++;
+	stack->size_a = i;
+	stack->a = ft_calloc(i, sizeof(int));
+	if (!stack->a)
+	{
+		free_split(split);
+		return ;
+	}
+	i = 0;
+	while (split[i])
+	{
+		stack->a[i] = ft_atoi(split[i]);
+		i++;
+	}
+	free_split(split);
+}

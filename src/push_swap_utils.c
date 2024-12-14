@@ -12,23 +12,15 @@
 
 #include "push_swap.h"
 
-int	isalldigit(char **s)
+static int	isalldigit(char *s)
 {
 	int	i;
-	int	j;
 
 	i = 0;
 	while (s[i])
 	{
-		j = 0;
-		if (s[i][j] == '-')
-			j++;
-		while (s[i][j])
-		{
-			if (!ft_isdigit(s[i][j]))
-				return (0);
-			j++;
-		}
+		if (!ft_isdigit(s[i]) && (s[i] != ' '))
+			return (0);
 		i++;
 	}
 	return (1);
@@ -37,7 +29,7 @@ int	isalldigit(char **s)
 /*
 	The comparisons work like as in insertion sort
 */
-int	isduplicate(char **s)
+static int	isduplicate(char *s)
 {
 	int	i;
 	int	j;
@@ -48,7 +40,7 @@ int	isduplicate(char **s)
 		j = i - 1;
 		while (j >= 0)
 		{
-			if (ft_strncmp(s[i], s[j], ft_strlen(s[i])) == 0)
+			if (s[j] == s[i])
 				return (1);
 			j--;
 		}
@@ -57,19 +49,32 @@ int	isduplicate(char **s)
 	return (0);
 }
 
-int	islargerthan_limits(char **s)
+static int	islargerthan_limits(char *s, t_stack *stack)
 {
-	int	i;
-	int	num;
+	int		i;
+	char	**temp;
 
+	temp = ft_split(s, ' ');
 	i = 0;
-	while (s[i])
+	while (temp[i])
 	{
-		num = ft_atoi(s[i]);
-		if ((num == INT_MAX && ft_strncmp(s[i], "2147483647", 11) != 0)
-			|| (num == INT_MIN && ft_strncmp(s[i], "-2147483648", 12) != 0))
+		if ((stack->a[i] == INT_MAX && ft_strncmp(temp[i], "2147483647", 11) != 0)
+			|| (stack->a[i] == INT_MIN && ft_strncmp(temp[i], "-2147483648", 12) != 0))
+		{
+			free_split(temp);
 			return (1);
+		}
 		i++;
 	}
+	free_split(temp);
 	return (0);
+}
+
+int	validate_stack(t_stack *stack, char *argv)
+{
+	if (already_sorted(stack))
+		program_destroy(stack, NULL);
+	if (!isalldigit(argv) || isduplicate(argv) || islargerthan_limits(argv, stack))
+		program_destroy(stack, "Error: stack is not valid.");
+	return (1);
 }

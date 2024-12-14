@@ -25,13 +25,12 @@ typedef struct s_stack
 }	t_stack;
 
 //	Initiate the stack
-int		*stack_init(char **s, int *size);
+void	stack_init(char *s, t_stack *stack);
 
 //	Check funtions
-int		isalldigit(char **s);
-int		isduplicate(char **s);
-int		islargerthan_limits(char **s);
-int		already_sorted(char **s);
+void	free_split(char **split);
+int		validate_stack(t_stack *stack, char *argv);
+int		already_sorted(t_stack *stack);
 int		issorted(int *n, int array_size);
 
 //	Operations funtions
@@ -41,7 +40,6 @@ void	ft_rotate(int **n, int array_size);
 void	ft_reverse_rotate(int **n, int array_size);
 
 //	Solve utils
-void	ft_least_moves(t_stack *stack);
 int		get_bigger_num(int *n, int array_size);
 int		get_smaller_num(int *n, int array_size);
 int		partially_sorted(t_stack *stack);
@@ -61,5 +59,10 @@ void	ft_pa(t_stack *stack, int flag);
 
 //	Cases functions
 void	ft_case3(t_stack *stack);
+
+//	Program run
+int		program_create(char *argv, t_stack *stack);
+int		program_execute(t_stack *stack);
+int		program_destroy(t_stack *stack, char *message);
 
 #endif

@@ -12,21 +12,39 @@
 
 #include "push_swap.h"
 
-int	already_sorted(char **s)
+static void	cpy_stack(int *dest, int *src, int size)
 {
 	int	i;
-	int	num;
-	int	num2;
 
-	i = 1;
-	while (s[i])
+	i = 0;
+	while (i < size)
 	{
-		num = ft_atoi(s[i]);
-		num2 = ft_atoi(s[i - 1]);
-		if (num <= num2)
-			return (0);
+		dest[i] = src[i];
 		i++;
 	}
+}
+
+int	already_sorted(t_stack *stack)
+{
+	int	*temp;
+	int	i;
+
+	temp = ft_calloc(stack->size_a, sizeof(int));
+	if (!temp)
+		program_destroy(stack, "Error: already_sorted failed");
+	cpy_stack(temp, stack->a, stack->size_a);
+	ft_quicksort(temp, 0, stack->size_a - 1);
+	i = 0;
+	while (i < stack->size_a)
+	{
+		if (temp[i] != stack->a[i])
+		{
+			free(temp);
+			return (0);
+		}
+		i++;
+	}
+	free(temp);
 	return (1);
 }
 
