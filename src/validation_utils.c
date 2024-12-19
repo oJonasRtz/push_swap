@@ -1,43 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init.c                                          :+:      :+:    :+:   */
+/*   validation_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 13:25:28 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/19 13:58:18 by jopereir         ###   ########.fr       */
+/*   Created: 2024/12/19 11:05:26 by jopereir          #+#    #+#             */
+/*   Updated: 2024/12/19 11:05:44 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_split(char **split)
+int	is_larger_than_int_max(int n, char *str)
 {
-	int	i;
-
-	i = 0;
-	while (split[i])
-	{
-		free(split[i]);
-		i++;
-	}
-	free(split);
+	return (n == INT_MAX && ft_strncmp(str, "2147483647", 11) != 0);
 }
 
-void	stack_init(char **s, t_stack *stack)
+int	is_less_than_int_min(int n, char *str)
 {
-	int		i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	stack->size_a = i;
-	stack->a = ft_calloc(i, sizeof(int));
-	i = 0;
-	while (s[i])
-	{
-		stack->a[i] = ft_atoi(s[i]);
-		i++;
-	}
+	return (n == INT_MIN && ft_strncmp(str, "-2147483648", 12) != 0);
 }
