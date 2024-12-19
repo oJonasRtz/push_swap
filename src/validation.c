@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:02:13 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/19 14:37:59 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:57:44 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static int	islargerthan_limits(char **s, t_stack *stack)
 
 int	validate_stack(t_stack *stack, char **argv)
 {
-	if (already_sorted(stack))
+	if (already_sorted(stack, stack->size_a))
 		destroy(stack, NULL);
 	if (!isalldigit(argv) || isduplicate(argv)
 		|| islargerthan_limits(argv, stack))

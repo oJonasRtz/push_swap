@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 10:49:18 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/05 13:42:13 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/19 15:47:03 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	double_operation(t_stack *stack,
 int	partially_sorted(t_stack *stack)
 {
 	double_operation(stack, &ft_pb, 2, 0);
-	if (already_sorted(stack))
+	if (already_sorted(stack, stack->size_a))
 	{
 		double_operation(stack, &ft_pa, 2, 0);
 		ft_sa(stack, 1);
@@ -79,7 +79,7 @@ int	partially_sorted(t_stack *stack)
 	double_operation(stack, &ft_rra, 2, 0);
 	ft_sa(stack, 0);
 	double_operation(stack, &ft_ra, 2, 0);
-	if (already_sorted(stack))
+	if (already_sorted(stack, stack->size_a))
 		ft_printf("rra\nrra\nsa\nra\nra\n");
 	else
 	{
@@ -90,7 +90,7 @@ int	partially_sorted(t_stack *stack)
 		ft_sa(stack, 1);
 		ft_ra(stack, 1);
 	}
-	if (already_sorted(stack))
+	if (already_sorted(stack, stack->size_a))
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 11:53:59 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/19 15:38:02 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:09:08 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,10 @@ static void	show_stack(t_stack *stack)
 
 int	create(char **argv, t_stack *stack)
 {
-	ft_printf("create\n");
 	set_null(stack);
 	stack_init(&argv[1], stack);
 	if (!validate_stack(stack, argv))
 		destroy(stack, "Error: validate_stack failed");
-	ft_printf("validado\n");
 	if (!stack->a)
 		destroy(stack, "Error: stack_init failed");
 	execute(stack);
@@ -48,12 +46,12 @@ int	create(char **argv, t_stack *stack)
 
 int	execute(t_stack *stack)
 {
-	// if (stack->size_a == 2)
-	// 	ft_sa(stack, 1);
-	// else if (stack->size_a == 3)
-	// 	ft_case3(stack);
-	// else if (stack->size_a == 5)
-	// 	ft_case5(stack);
+	if (stack->size_a == 2)
+		ft_sa(stack, 1);
+	else if (stack->size_a == 3)
+		ft_case3(stack);
+	else if (stack->size_a == 5)
+		ft_case5(stack);
 	
 	//Essas duas linhas devem ser apagadas antes de enviar o projeto pra avaliação
 	show_stack(stack);
