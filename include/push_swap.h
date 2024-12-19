@@ -30,7 +30,7 @@ void	stack_init(char **s, t_stack *stack);
 
 //	Check funtions
 void	free_split(char **split);
-int		validate_stack(t_stack *stack, char **argv);
+int		validate_stack(t_stack *stack, char *argv);
 int		already_sorted(t_stack *stack);
 
 //	Operations funtions

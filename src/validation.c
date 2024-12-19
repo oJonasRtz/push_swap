@@ -12,21 +12,15 @@
 
 #include "push_swap.h"
 
-static int	isalldigit(char **s)
+static int	isalldigit(char *s)
 {
 	int	i;
-	int	j;
 
 	i = 0;
 	while (s[i])
 	{
-		j = 0;
-		while (s[i][j])
-		{
-			if (!ft_isdigit(s[i][j]) && (s[i][j] != ' ') && s[i][j] != '-')
-				return (0);
-			j++;
-		}
+		if (!ft_isdigit(s[i]) && (s[i] != ' ') && s[i] != '-')
+			return (0);
 		i++;
 	}
 	return (1);
@@ -35,7 +29,7 @@ static int	isalldigit(char **s)
 /*
 	The comparisons work like as in insertion sort
 */
-static int	isduplicate(char **s)
+static int	isduplicate(char *s)
 {
 	int	i;
 	int	j;
@@ -46,7 +40,7 @@ static int	isduplicate(char **s)
 		j = i - 1;
 		while (j >= 0)
 		{
-			if ((ft_strncmp(s[i])) && (s[i] != ' ' || s[j] != ' '))
+			if (s[j] == s[i])
 				return (1);
 			j--;
 		}
@@ -59,22 +53,28 @@ static int	isduplicate(char **s)
 	ft_atoi returns the INT_MAX if the values pass it, so the function
 		must verify if the string and the value are equals
 */
-static int	islargerthan_limits(char **s, t_stack *stack)
+static int	islargerthan_limits(char *s, t_stack *stack)
 {
 	int		i;
+	char	**temp;
 
+	temp = ft_split(s, ' ');
 	i = 0;
-	while (s[i])
+	while (temp[i])
 	{
-		if ((stack->a[i] == INT_MAX && ft_strncmp(s[i], "2147483647", 11) != 0)
-			|| (stack->a[i] == INT_MIN && ft_strncmp(s[i], "-2147483648", 12) != 0))
+		if ((stack->a[i] == INT_MAX && ft_strncmp(temp[i], "2147483647", 11) != 0)
+			|| (stack->a[i] == INT_MIN && ft_strncmp(temp[i], "-2147483648", 12) != 0))
+		{
+			free_split(temp);
 			return (1);
+		}
 		i++;
 	}
+	free_split(temp);
 	return (0);
 }
 
-int	validate_stack(t_stack *stack, char **argv)
+int	validate_stack(t_stack *stack, char *argv)
 {
 	if (already_sorted(stack))
 		program_destroy(stack, NULL);
