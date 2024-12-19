@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 11:53:59 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/19 14:35:58 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/19 15:38:02 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	create(char **argv, t_stack *stack)
 {
 	ft_printf("create\n");
 	set_null(stack);
-	stack_init(argv, stack);
+	stack_init(&argv[1], stack);
 	if (!validate_stack(stack, argv))
 		destroy(stack, "Error: validate_stack failed");
 	ft_printf("validado\n");
