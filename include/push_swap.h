@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:49:58 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/19 15:46:22 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:28:09 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_stack
 void	stack_init(char **s, t_stack *stack);
 
 //	Check funtions
-int		already_sorted(t_stack *stack, int n);
+int		already_sorted(t_stack *stack, int first, int last);
 
 //	Validation
 int		is_less_than_int_min(int n, char *str);

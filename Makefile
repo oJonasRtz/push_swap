@@ -6,16 +6,16 @@
 #    By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 11:11:14 by jopereir          #+#    #+#              #
-#    Updated: 2024/12/19 14:31:53 by jopereir         ###   ########.fr        #
+#    Updated: 2024/12/20 10:40:10 by jopereir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
 SRC_DIR = src
-SRCS = already_sorted.c events.c ft_init.c ft_solve_utils.c \
-	ft_solve.c operations.c operations2.c operations3.c push.c \
-	reverse_rotate.c rotate.c swap.c validation_utils.c validation.c \
+SRCS = already_sorted.c events.c ft_init.c ft_solve_low.c ft_solve_low_utils.c \
+	operations.c operations2.c operations3.c push.c reverse_rotate.c rotate.c \
+	swap.c validation_utils.c validation.c ft_solve_high.c
 	
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 OBJ = $(SRC:.c=.o)

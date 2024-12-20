@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 10:11:30 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/19 15:45:16 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:28:38 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	cpy_stack(int *dest, int *src, int size)
 /*
 	Verifies up to 'n' if a stack is already sorted
 */
-int	already_sorted(t_stack *stack, int n)
+int	already_sorted(t_stack *stack, int first, int last)
 {
 	int	*temp;
 	int	i;
@@ -37,8 +37,8 @@ int	already_sorted(t_stack *stack, int n)
 		destroy(stack, "Error: already_sorted failed");
 	cpy_stack(temp, stack->a, stack->size_a);
 	ft_quicksort(temp, 0, stack->size_a - 1);
-	i = 0;
-	while (i < n)
+	i = first;
+	while (i < last)
 	{
 		if (temp[i] != stack->a[i])
 		{

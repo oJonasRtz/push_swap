@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:02:13 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/20 10:16:56 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:29:59 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,12 @@ static int	isalldigit(char **s)
 	while (s[i])
 	{
 		j = 0;
-		if (s[i][j] == '-')
+		if (s[i][j] == '-' || s[i][j] == '+')
 			j++;
 		while (s[i][j])
 		{
 			if (!ft_isdigit(s[i][j]))
-			{
-				ft_printf("digit\n");
 				return (0);
-			}
 			j++;
 		}
 		i++;
@@ -52,7 +49,7 @@ static int	isduplicate(char **s)
 		while (j >= 0)
 		{
 			if (ft_strncmp(s[i], s[j], ft_strlen(s[i])) == 0)
-				return (ft_printf("Duplicate\n"));
+				return (1);
 			j--;
 		}
 		i++;
@@ -73,7 +70,7 @@ static int	islargerthan_limits(char **s, t_stack *stack)
 	{
 		if (is_larger_than_int_max(stack->a[i], s[i])
 			|| is_less_than_int_min(stack->a[i], s[i]))
-			return (ft_printf("Larger\n"));
+			return (1);
 		i++;
 	}
 	return (0);
@@ -81,7 +78,7 @@ static int	islargerthan_limits(char **s, t_stack *stack)
 
 int	validate_stack(t_stack *stack, char **argv)
 {
-	if (already_sorted(stack, stack->size_a))
+	if (already_sorted(stack, 0, stack->size_a))
 		destroy(stack, NULL);
 	if (!isalldigit(&argv[1]) || isduplicate(&argv[1])
 		|| islargerthan_limits(&argv[1], stack))
