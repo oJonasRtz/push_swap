@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:02:13 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/19 16:57:44 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:16:56 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,15 @@ static int	isalldigit(char **s)
 	while (s[i])
 	{
 		j = 0;
+		if (s[i][j] == '-')
+			j++;
 		while (s[i][j])
 		{
-			if (!ft_isdigit(s[i][j]) && s[i][j] != '-')
+			if (!ft_isdigit(s[i][j]))
+			{
+				ft_printf("digit\n");
 				return (0);
+			}
 			j++;
 		}
 		i++;
@@ -40,7 +45,7 @@ static int	isduplicate(char **s)
 	int	i;
 	int	j;
 
-	i = 1;
+	i = 0;
 	while (s[i])
 	{
 		j = i - 1;
@@ -78,8 +83,8 @@ int	validate_stack(t_stack *stack, char **argv)
 {
 	if (already_sorted(stack, stack->size_a))
 		destroy(stack, NULL);
-	if (!isalldigit(argv) || isduplicate(argv)
-		|| islargerthan_limits(argv, stack))
+	if (!isalldigit(&argv[1]) || isduplicate(&argv[1])
+		|| islargerthan_limits(&argv[1], stack))
 		destroy(stack, "Error");
 	return (1);
 }
