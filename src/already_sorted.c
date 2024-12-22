@@ -50,3 +50,25 @@ int	already_sorted(t_stack *stack, int first, int last)
 	free(temp);
 	return (1);
 }
+
+int	already_sorted2(int *stack, int size, int first, int last)
+{
+	int	*temp;
+	int	i;
+
+	temp = ft_calloc(size, sizeof(int));
+	cpy_stack(temp, stack, size);
+	ft_quicksort(temp, 0, size - 1);
+	i = first;
+	while (i < last)
+	{
+		if (temp[i] != stack[i])
+		{
+			free(temp);
+			return (0);
+		}
+		i++;
+	}
+	free(temp);
+	return (1);
+}

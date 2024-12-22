@@ -36,8 +36,7 @@ int	create(char **argv, t_stack *stack)
 {
 	set_null(stack);
 	stack_init(&argv[1], stack);
-	if (!validate_stack(stack, argv))
-		destroy(stack, "Error: validate_stack failed");
+	validate_stack(stack, argv);
 	if (!stack->a)
 		destroy(stack, "Error: stack_init failed");
 	execute(stack);

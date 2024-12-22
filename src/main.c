@@ -12,12 +12,11 @@
 
 #include "push_swap.h"
 
-int	main(int argc, char *argv[])
+int	main(int argc, char **argv)
 {
 	t_stack	stack;
 
-	if (argc < 3)
-		exit (0);
-	create(argv, &stack);
+	if (argc > 2)
+		create(argv, &stack);
 	return (0);
 }

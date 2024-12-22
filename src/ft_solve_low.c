@@ -48,23 +48,25 @@ void	move_smaller_to_b(t_stack *stack, int flag)
 
 	smaller_index = get_smaller_num(stack->a, stack->size_a);
 	if (smaller_index != 0)
-		move_smaller_to_top(stack, flag);
+		move_smaller_to_top(stack, smaller_index, flag);
 	ft_pb(stack, flag);
 }
 
-void	move_smaller_to_top(t_stack *stack, int flag)
+void	move_to_top(t_stack *stack, int num, int flag)
 {
-	int	smaller;
+	int	moves_back;
 
-	smaller = get_smaller_num(stack->a, stack->size_a);
-	if (smaller != 0)
+	if (num != 0)
 	{
-		if (smaller <= stack->size_a / 2)
-			while (smaller-- > 0)
+		if (get_least_moves(stack, num) == num)
+			while (num-- > 0)
 				ft_ra(stack, flag);
 		else
-			while (smaller++ < stack->size_a)
+		{
+			moves_back = stack->size_a - num;
+			while (moves_back-- > 0)
 				ft_rra(stack, flag);
+		}
 	}
 }
 
@@ -111,9 +113,9 @@ void	tiny_sort(t_stack *stack)
 
 	if (stack->size_a  == 2)
 		ft_sa(stack, 1);
-	if (stack->size_a == 3)
+	else if (stack->size_a == 3)
 		ft_case3(stack);
-	if (stack->size_a <= 5)
+	else if (stack->size_a <= 5)
 		ft_case5(stack);
 	else if (stack->size_a <= 7)
 	{

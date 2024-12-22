@@ -12,32 +12,77 @@
 
 #include "push_swap.h"
 
-static int	get_pivot(int *stack, int size)
+static void	cpy_stack2(int *dest, int *src, int start, int end)
+{
+	int	i;
+
+	i = 0;
+	while (start < end)
+	{
+		dest[i] = src[start];
+		i++;
+		start++;
+	}
+}
+
+static void	init_temp(int *temp_a, int *temp_b, t_stack *stack)
 {
 	int	*temp;
-	int	pi;
 
-	temp = ft_calloc(size, sizeof(int));
-	cpy_stack(temp, stack, size);
-	ft_quicksort(temp, 0, size);
-	pi = temp[size / 2];
+	temp = ft_calloc(stack->size_a, sizeof(int));
+	temp_a = ft_calloc(stack->size_a / 2 + stack->size_a % 2, sizeof(int));
+	temp_b = ft_calloc(stack->size_a / 2, sizeof(int));
+	cpy_stack(temp, stack->a, stack->size_a);
+	ft_quicksort(temp, 0, stack->size_a);
+	cpy_stack(temp_b, temp, stack->size_a / 2);
+	reverse_quicksort(temp_b, 0, stack->size_a / 2);
+	cpy_stack2(temp_a, temp, stack->size_a / 2 + 1, stack->size_a);
 	free(temp);
-	return (pi);
+}
+
+static int	check_sort(int *stack, int size, int *sorted)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+	{
+		if (stack[i] != sorted[i])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+static void	move_to_b(t_stack *stack, int *temp_b)
+{
+	int	first;
+	int	last;
+	int	min_dist;
+
+	first = get_first(stack, temp_b);
+	last = get_last(stack, temp_b);
+	min_dist = first;
+	if (min_dist == 0)
+		return (ft_pb(stack, 1));
+	if (get_least_moves(stack, last) < first)
+		min_dist = last;
+	move_to_top(stack, min_dist, 1);
+	ft_pb(stack, 1);
 }
 
 void    large_sort(t_stack *stack)
 {
-	int	pivot;
-	int	len;
+	int	*temp_a;
+	int	*temp_b;
+	int	i;
 
-	pivot = get_pivot(stack->a, stack->size_a);
-	len = stack->size_a;
-	while (len != stack->size_a / 2 + stack->size_a % 2)
+	init_temp(temp_a, temp_b, stack);
+	i = 0;
+	while (i < stack->size_a / 2)
 	{
-		if (stack->a[0] < pivot && len--)
-			ft_pb(stack, 1);
-		else
-			ft_ra(stack, 1);
+		move_to_b(stack, temp_b);
+		i++;
 	}
-	
 }
+
