@@ -30,6 +30,7 @@ void	stack_init(char **s, t_stack *stack);
 
 //	Check funtions
 int		already_sorted(t_stack *stack, int first, int last);
+void	cpy_stack(int *dest, int *src, int size);
 
 //	Validation
 int		is_less_than_int_min(int n, char *str);
@@ -50,6 +51,7 @@ void	double_operation(t_stack *stack,
 			void (*f)(t_stack *, int), int n, int flag);
 void	move_smaller_to_b(t_stack *stack, int flag);
 void	move_smaller_to_top(t_stack *stack, int flag);
+int 	min(int a, int b);
 
 //	Operataions
 void	ft_sa(t_stack *stack, int flag);
@@ -64,9 +66,9 @@ void	ft_rr(t_stack *stack, int flag);
 void	ft_pb(t_stack *stack, int flag);
 void	ft_pa(t_stack *stack, int flag);
 
-//	Cases functions
-void	ft_case3(t_stack *stack);
-void	ft_case5(t_stack *stack);
+//	Solve functions
+void	tiny_sort(t_stack *stack);
+void    large_sort(t_stack *stack);
 
 //	Program run
 int		create(char **argv, t_stack *stack);

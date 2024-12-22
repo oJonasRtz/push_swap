@@ -21,16 +21,16 @@ static void	set_null(t_stack *stack)
 	stack->ocnt = 0;
 }
 
-// static void	show_stack(t_stack *stack)
-// {
-// 	int	i;
+static void	show_stack(t_stack *stack)
+{
+	int	i;
 
-// 	i = 0;
-// 	ft_printf("Stack A: ");
-// 	while (i < stack->size_a)
-// 		ft_printf("%d ", stack->a[i++]);
-// 	ft_printf("\n");
-// }
+	i = 0;
+	ft_printf("Stack A: ");
+	while (i < stack->size_a)
+		ft_printf("%d ", stack->a[i++]);
+	ft_printf("\n");
+}
 
 int	create(char **argv, t_stack *stack)
 {
@@ -46,16 +46,14 @@ int	create(char **argv, t_stack *stack)
 
 int	execute(t_stack *stack)
 {
-	if (stack->size_a == 2)
-		ft_sa(stack, 1);
-	else if (stack->size_a == 3)
-		ft_case3(stack);
-	else if (stack->size_a == 5)
-		ft_case5(stack);
+	if (stack->size_a <= 7)
+		tiny_sort(stack);
+	else
+		large_sort(stack);
 	
 	//Essas duas linhas devem ser apagadas antes de enviar o projeto pra avaliação
-	// show_stack(stack);
-	// ft_printf("Size_a: %d Operations: %d\n", stack->size_a, stack->ocnt);
+	show_stack(stack);
+	ft_printf("Size_a: %d Operations: %d\n", stack->size_a, stack->ocnt);
 
 	destroy(stack, NULL);
 	return (1);

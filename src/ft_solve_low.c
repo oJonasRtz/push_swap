@@ -15,7 +15,7 @@
 /*
 	Solves a array of 3 numbers
 */
-void	ft_case3(t_stack *stack)
+static void	ft_case3(t_stack *stack)
 {
 	int		bigger_num;
 	int		smaller_num;
@@ -93,14 +93,35 @@ void	move_smaller_to_top(t_stack *stack, int flag)
 	3.sort stack b to desceding order
 	4.push stack b numbers to a
 */
-void	ft_case5(t_stack *stack)
+static void	ft_case5(t_stack *stack)
 {
 	int			half;
 
 	if (partially_sorted(stack))
 		return ;
-	half = stack->size_a / 2;
+	half = stack->size_a - 3;
 	double_operation(stack, &move_smaller_to_b, half, 1);
 	ft_case3(stack);
 	double_operation(stack, &ft_pa, half, 1);
+}
+
+void	tiny_sort(t_stack *stack)
+{
+	int	case7;
+
+	if (stack->size_a  == 2)
+		ft_sa(stack, 1);
+	if (stack->size_a == 3)
+		ft_case3(stack);
+	if (stack->size_a <= 5)
+		ft_case5(stack);
+	else if (stack->size_a <= 7)
+	{
+		if (partially_sorted(stack))
+			return ;
+		case7 = stack->size_a - 5;
+		double_operation(stack, &move_smaller_to_b, case7, 1);
+		ft_case5(stack);
+		double_operation(stack, &ft_pa, case7, 1);
+	}
 }

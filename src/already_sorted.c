@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static void	cpy_stack(int *dest, int *src, int size)
+void	cpy_stack(int *dest, int *src, int size)
 {
 	int	i;
 
