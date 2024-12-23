@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:49:58 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/23 12:49:05 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/23 15:21:37 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	stack_init(char **s, t_stack *stack);
 //	Check funtions
 int		already_sorted(t_stack *stack, int first, int last);
 void	cpy_stack(int *dest, int *src, int size);
-int		already_sorted2(t_temp_stack *stack, int *temp, int first, int last);
+int		already_sorted2(int *stack, t_temp_stack *temp, int first, int last);
 
 //	Validation
 int		is_less_than_int_min(int n, char *str);
@@ -62,6 +62,7 @@ void	reverse_quicksort(int *array, int low, int high);
 int		get_first(t_stack *stack, int *temp, int len);
 int		get_last(t_stack *stack, int *temp, int len);
 int		get_least_moves(t_stack *stack, int index);
+int		solve(t_stack *stack, t_temp_stack *temp_a, t_temp_stack *temp_b);
 
 //	Operataions
 void	ft_sa(t_stack *stack, int flag);

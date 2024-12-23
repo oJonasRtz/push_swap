@@ -6,11 +6,18 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:38:49 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/23 13:40:53 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/23 15:34:53 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	get_least_moves(t_stack *stack, int index)
+{
+	if (stack->size_a - index < index)
+		return (stack->size_a - index);
+	return (index);
+}
 
 static int	cpy_stack2(int *dest, int *src, int start, int end)
 {
@@ -63,26 +70,20 @@ void	large_sort(t_stack *stack)
 	t_temp_stack	temp_a;
 	t_temp_stack	temp_b;
 	int				i;
+	int				op;
 
 	temp_b.stack = ft_calloc(stack->size_a / 2, sizeof(int));
 	temp_a.stack = ft_calloc(stack->size_a / 2
 			+ (stack->size_a % 2 != 0), sizeof(int));
 	init_temp(&temp_a, &temp_b, stack);
+	op = temp_b.len;
 	i = 0;
 	while (i < temp_b.len)
 	{
-		move_to_b(stack, temp_b.stack, temp_b.len);
+		move_to_b(stack, temp_b.stack, op);
 		i++;
 	}
-	i = 0;
-	ft_printf("temp A: ");
-	while (i < temp_a.len)
-		ft_printf("%d ", temp_a.stack[i++]);
-	ft_printf("\n");
-	i = 0;
-	ft_printf("temp B: ");
-	while (i < temp_a.len)
-		ft_printf("%d ", temp_b.stack[i++]);
-	ft_printf("\n");
+	solve(stack, &temp_a, &temp_b);
+	double_operation(stack, &ft_pa, op, 1);
 	ft_double_free(temp_a.stack, temp_b.stack);
 }

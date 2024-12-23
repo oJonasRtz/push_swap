@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 10:11:30 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/23 12:45:54 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/23 15:25:40 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,20 +51,16 @@ int	already_sorted(t_stack *stack, int first, int last)
 	return (1);
 }
 
-int	already_sorted2(t_temp_stack *stack, int *temp, int first, int last)
+int	already_sorted2(int *stack, t_temp_stack *temp, int first, int last)
 {
 	int	i;
 
 	i = first;
 	while (i < last)
 	{
-		if (temp[i] != stack->stack[i])
-		{
-			free(temp);
+		if (temp->stack[i] != stack[i])
 			return (0);
-		}
 		i++;
 	}
-	free(temp);
 	return (1);
 }
