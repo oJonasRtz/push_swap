@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:38:49 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/23 15:34:53 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/23 15:58:52 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,16 @@ void	large_sort(t_stack *stack)
 		move_to_b(stack, temp_b.stack, op);
 		i++;
 	}
+	i = 0;
+	ft_printf("temp a: ");
+	while (i < temp_a.len)
+		ft_printf("%d ", temp_a.stack[i++]);
+	ft_printf("\n");
+	i = 0;
+	ft_printf("stack a: ");
+	while (i < stack->size_a)
+		ft_printf("%d ", stack->a[i++]);
+	ft_printf("\n");
 	solve(stack, &temp_a, &temp_b);
 	double_operation(stack, &ft_pa, op, 1);
 	ft_double_free(temp_a.stack, temp_b.stack);
