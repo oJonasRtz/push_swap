@@ -6,20 +6,29 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:38:49 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/23 10:26:08 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/23 13:57:59 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	solve_a(t_stack *stack, int *temp_a);
-
-int	solve_b(t_stack *stack, int *temp_b);
+int	solve(t_stack *stack, int *temp_a, int *temp_b)
+{
+	if (!already_sorted2(stack->a, stack->size_a, 0, stack->size_a - 1))
+	{
+		//solve a
+	}
+	if (!already_sorted2(stack->b, stack->size_b, 0, stack->size_b - 1))
+	{
+		//solve b
+	}
+	return (1);
+}
 
 /*
     find the first index of a value of temp in stack a
 */
-int	get_first(t_stack *stack, int *temp)
+int	get_first(t_stack *stack, int *temp, int len)
 {
 	int	i;
 	int	j;
@@ -28,7 +37,7 @@ int	get_first(t_stack *stack, int *temp)
 	while (i < stack->size_a)
 	{
 		j = 0;
-		while (j < stack->size_a / 2)
+		while (j < len)
 		{
 			if (stack->a[i] == temp[j])
 				return (i);
@@ -39,7 +48,7 @@ int	get_first(t_stack *stack, int *temp)
 	return (-1);
 }
 
-int	get_last(t_stack *stack, int *temp)
+int	get_last(t_stack *stack, int *temp, int len)
 {
 	int	i;
 	int	j;
@@ -48,7 +57,7 @@ int	get_last(t_stack *stack, int *temp)
 	while (i >= 0)
 	{
 		j = 0;
-		while (j < stack->size_a / 2)
+		while (j < len)
 		{
 			if (stack->a[i] == temp[j])
 				return (i);

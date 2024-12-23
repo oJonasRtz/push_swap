@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isodd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 10:42:42 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/23 13:11:09 by jopereir         ###   ########.fr       */
+/*   Created: 2024/12/23 11:45:52 by jopereir          #+#    #+#             */
+/*   Updated: 2024/12/23 11:48:15 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_iseven(const int n)
 {
-	t_stack	stack;
+	return (n % 2 == 0);
+}
 
-	if (argc > 2)
-		create(argv, &stack);
-	return (0);
+int	ft_isodd(const int n)
+{
+	return (!ft_iseven(n));
 }

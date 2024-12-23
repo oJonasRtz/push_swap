@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:02:13 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/23 10:36:27 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/23 10:47:43 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,18 @@ static int	isalldigit(char **s)
 /*
 	The comparisons work like as in insertion sort
 */
-static int	isduplicate(char **s)
+static int	isduplicate(t_stack *stack)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (s[i])
+	while (i < stack->size_a)
 	{
 		j = i - 1;
 		while (j >= 0)
 		{
-			if (ft_strncmp(s[i], s[j], ft_strlen(s[i])) == 0)
+			if (stack->a[i] == stack->a[j])
 				return (1);
 			j--;
 		}
@@ -82,7 +82,7 @@ int	validate_stack(t_stack *stack, char **argv)
 {
 	if (already_sorted(stack, 0, stack->size_a))
 		destroy(stack, NULL);
-	if (!isalldigit(&argv[1]) || isduplicate(&argv[1])
+	if (!isalldigit(&argv[1]) || isduplicate(stack)
 		|| islargerthan_limits(&argv[1], stack))
 		destroy(stack, "Error");
 	return (1);

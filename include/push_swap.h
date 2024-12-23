@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:49:58 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/23 10:29:09 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/23 12:49:05 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 
 # include "libft.h"
 # include <limits.h>
+
+typedef struct s_temp
+{
+	int	*stack;
+	int	len;
+}	t_temp_stack;
 
 typedef struct s_stack
 {
@@ -31,7 +37,7 @@ void	stack_init(char **s, t_stack *stack);
 //	Check funtions
 int		already_sorted(t_stack *stack, int first, int last);
 void	cpy_stack(int *dest, int *src, int size);
-int		already_sorted2(int *stack, int size, int first, int last);
+int		already_sorted2(t_temp_stack *stack, int *temp, int first, int last);
 
 //	Validation
 int		is_less_than_int_min(int n, char *str);
@@ -53,8 +59,8 @@ void	double_operation(t_stack *stack,
 void	move_smaller_to_b(t_stack *stack, int flag);
 void	move_to_top(t_stack *stack, int num, int flag);
 void	reverse_quicksort(int *array, int low, int high);
-int		get_first(t_stack *stack, int *temp);
-int		get_last(t_stack *stack, int *temp);
+int		get_first(t_stack *stack, int *temp, int len);
+int		get_last(t_stack *stack, int *temp, int len);
 int		get_least_moves(t_stack *stack, int index);
 
 //	Operataions

@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 09:51:17 by jopereir          #+#    #+#             */
-/*   Updated: 2024/10/24 11:27:27 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/23 11:50:04 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 void	ft_quicksort(int *array, int low, int high);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
+void	*ft_double_free(void *a, void *b);
+int		ft_isodd(const int n);
+int		ft_iseven(const int n);
 
 #endif

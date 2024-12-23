@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   reverse_quicksort.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:00:57 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/03 10:53:57 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/23 13:43:29 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static void	swap(int *a, int *b)
 {
-	int	tmp;
+	int	temp;
 
-	tmp = *a;
+	temp = *a;
 	*a = *b;
-	*b = tmp;
+	*b = temp;
 }
 
 static int	partition(int *array, int low, int high)
@@ -52,7 +52,7 @@ void	reverse_quicksort(int *array, int low, int high)
 	if (low < high)
 	{
 		pivot = partition(array, low, high);
-		ft_quicksort(array, low, pivot - 1);
-		ft_quicksort(array, pivot + 1, high);
+		reverse_quicksort(array, low, pivot - 1);
+		reverse_quicksort(array, pivot + 1, high);
 	}
 }

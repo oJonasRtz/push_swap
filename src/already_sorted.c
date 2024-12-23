@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 10:11:30 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/20 10:28:38 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/23 12:45:54 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	already_sorted(t_stack *stack, int first, int last)
 
 	temp = ft_calloc(stack->size_a, sizeof(int));
 	if (!temp)
-		destroy(stack, "Error: already_sorted failed");
+		destroy(stack, NULL);
 	cpy_stack(temp, stack->a, stack->size_a);
 	ft_quicksort(temp, 0, stack->size_a - 1);
 	i = first;
@@ -51,18 +51,14 @@ int	already_sorted(t_stack *stack, int first, int last)
 	return (1);
 }
 
-int	already_sorted2(int *stack, int size, int first, int last)
+int	already_sorted2(t_temp_stack *stack, int *temp, int first, int last)
 {
-	int	*temp;
 	int	i;
 
-	temp = ft_calloc(size, sizeof(int));
-	cpy_stack(temp, stack, size);
-	ft_quicksort(temp, 0, size - 1);
 	i = first;
 	while (i < last)
 	{
-		if (temp[i] != stack[i])
+		if (temp[i] != stack->stack[i])
 		{
 			free(temp);
 			return (0);
