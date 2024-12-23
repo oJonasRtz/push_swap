@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:02:13 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/20 11:27:57 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/23 10:36:27 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static int	isalldigit(char **s)
 		j = 0;
 		if (s[i][j] == '-')
 			j++;
+		if (s[i][0] == '\0')
+			return (0);
 		while (s[i][j])
 		{
 			if (!ft_isdigit(s[i][j]))

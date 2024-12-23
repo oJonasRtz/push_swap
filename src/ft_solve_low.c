@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_solve.c                                         :+:      :+:    :+:   */
+/*   ft_solve_low.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 10:49:18 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/20 10:29:47 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/23 10:40:29 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	move_smaller_to_b(t_stack *stack, int flag)
 
 	smaller_index = get_smaller_num(stack->a, stack->size_a);
 	if (smaller_index != 0)
-		move_smaller_to_top(stack, smaller_index, flag);
+		move_to_top(stack, smaller_index, flag);
 	ft_pb(stack, flag);
 }
 
@@ -111,7 +111,7 @@ void	tiny_sort(t_stack *stack)
 {
 	int	case7;
 
-	if (stack->size_a  == 2)
+	if (stack->size_a == 2)
 		ft_sa(stack, 1);
 	else if (stack->size_a == 3)
 		ft_case3(stack);
