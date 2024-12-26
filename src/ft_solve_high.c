@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:38:49 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/26 15:07:31 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/26 16:05:46 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	large_sort(t_stack *stack)
 		move_to_b(stack, temp_b.stack, op);
 		i++;
 	}
-	solve(stack, &temp_a, &temp_b);
+	solve(stack, &temp_a, &temp_b, 0);
+	double_operation(stack, &ft_pa, op, 1);
 	ft_double_free(temp_a.stack, temp_b.stack);
 }
-

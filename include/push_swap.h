@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:49:58 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/26 15:07:38 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/26 15:56:44 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	reverse_quicksort(int *array, int low, int high);
 int		get_first(t_stack *stack, int *temp, int len);
 int		get_last(t_stack *stack, int *temp, int len);
 int		get_least_moves(int size, int index);
-int		solve(t_stack *stack, t_temp_stack *temp_a, t_temp_stack *temp_b);
+int		solve(t_stack *stack, t_temp_stack *temp_a, t_temp_stack *temp_b, int i);
 int		get_index(int *stack, int size, int n);
 
 //	Operataions
