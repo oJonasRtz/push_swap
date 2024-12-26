@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:49:58 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/23 15:21:37 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/26 12:02:24 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,13 @@ int		partially_sorted(t_stack *stack);
 void	double_operation(t_stack *stack,
 			void (*f)(t_stack *, int), int n, int flag);
 void	move_smaller_to_b(t_stack *stack, int flag);
-void	move_to_top(t_stack *stack, int num, int flag);
+void	move_to_top(t_stack *stack, int num, char a_or_b);
 void	reverse_quicksort(int *array, int low, int high);
 int		get_first(t_stack *stack, int *temp, int len);
 int		get_last(t_stack *stack, int *temp, int len);
-int		get_least_moves(t_stack *stack, int index);
+int		get_least_moves(int size, int index);
 int		solve(t_stack *stack, t_temp_stack *temp_a, t_temp_stack *temp_b);
+int		get_index(int *stack, int size, int n);
 
 //	Operataions
 void	ft_sa(t_stack *stack, int flag);

@@ -1,16 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_solve_utils.c                                   :+:      :+:    :+:   */
+/*   ft_solve_low_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 10:49:18 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/20 10:35:08 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/26 12:02:12 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	get_index(int *stack, int size, int n)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+	{
+		if (stack[i] == n)
+			return (i);
+		i++;
+	}
+	return (-1);
+}
 
 /*
 	Returns the index of the biggest number

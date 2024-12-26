@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 10:49:18 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/23 10:40:29 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/26 10:32:33 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,26 +48,8 @@ void	move_smaller_to_b(t_stack *stack, int flag)
 
 	smaller_index = get_smaller_num(stack->a, stack->size_a);
 	if (smaller_index != 0)
-		move_to_top(stack, smaller_index, flag);
+		move_to_top(stack, smaller_index, 'a');
 	ft_pb(stack, flag);
-}
-
-void	move_to_top(t_stack *stack, int num, int flag)
-{
-	int	moves_back;
-
-	if (num != 0)
-	{
-		if (get_least_moves(stack, num) == num)
-			while (num-- > 0)
-				ft_ra(stack, flag);
-		else
-		{
-			moves_back = stack->size_a - num;
-			while (moves_back-- > 0)
-				ft_rra(stack, flag);
-		}
-	}
 }
 
 // static void	solve_stack(t_stack *stack, int *a, int i)

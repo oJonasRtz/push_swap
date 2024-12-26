@@ -6,16 +6,16 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:38:49 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/23 15:58:52 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/26 13:52:48 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	get_least_moves(t_stack *stack, int index)
+int	get_least_moves(int size, int index)
 {
-	if (stack->size_a - index < index)
-		return (stack->size_a - index);
+	if (size - index < index)
+		return (size - index);
 	return (index);
 }
 
@@ -59,9 +59,9 @@ static void	move_to_b(t_stack *stack, int *temp_b, int len)
 	min_dist = first;
 	if (min_dist == 0)
 		return (ft_pb(stack, 1));
-	if (get_least_moves(stack, last) < first)
+	if (get_least_moves(stack->size_a, last) < first)
 		min_dist = last;
-	move_to_top(stack, min_dist, 1);
+	move_to_top(stack, min_dist, 'a');
 	ft_pb(stack, 1);
 }
 
@@ -83,17 +83,28 @@ void	large_sort(t_stack *stack)
 		move_to_b(stack, temp_b.stack, op);
 		i++;
 	}
-	i = 0;
-	ft_printf("temp a: ");
-	while (i < temp_a.len)
-		ft_printf("%d ", temp_a.stack[i++]);
-	ft_printf("\n");
-	i = 0;
-	ft_printf("stack a: ");
-	while (i < stack->size_a)
-		ft_printf("%d ", stack->a[i++]);
-	ft_printf("\n");
+	// i = 0;
+	// ft_printf("temp a: ");
+	// while (i < temp_a.len)
+	// 	ft_printf("%d ", temp_a.stack[i++]);
+	// ft_printf("\n");
+	// i = 0;
+	// ft_printf("stack a: ");
+	// while (i < stack->size_a)
+	// 	ft_printf("%d ", stack->a[i++]);
+	// ft_printf("\n");
+	// i = 0;
+	// ft_printf("temp b: ");
+	// while (i < temp_b.len)
+	// 	ft_printf("%d ", temp_b.stack[i++]);
+	// ft_printf("\n");
+	// i = 0;
+	// ft_printf("stack b: ");
+	// while (i < stack->size_b)
+	// 	ft_printf("%d ", stack->b[i++]);
+	// ft_printf("\n");
 	solve(stack, &temp_a, &temp_b);
-	double_operation(stack, &ft_pa, op, 1);
+	//double_operation(stack, &ft_pa, op, 1);
 	ft_double_free(temp_a.stack, temp_b.stack);
 }
+
