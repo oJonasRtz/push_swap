@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 10:11:30 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/26 11:35:01 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/27 15:15:36 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,36 +29,31 @@ void	cpy_stack(int *dest, int *src, int size)
 */
 int	already_sorted(t_stack *stack, int first, int last)
 {
-	int	*temp;
 	int	i;
 
-	temp = ft_calloc(stack->size_a, sizeof(int));
-	if (!temp)
+	stack->sorted = ft_calloc(stack->size_a, sizeof(int));
+	if (!stack->sorted)
 		destroy(stack, NULL);
-	cpy_stack(temp, stack->a, stack->size_a);
-	ft_quicksort(temp, 0, stack->size_a - 1);
+	cpy_stack(stack->sorted, stack->a, stack->size_a);
+	ft_quicksort(stack->sorted, 0, stack->size_a - 1);
 	i = first;
 	while (i < last)
 	{
-		if (temp[i] != stack->a[i])
-		{
-			free(temp);
+		if (stack->sorted[i] != stack->a[i])
 			return (0);
-		}
 		i++;
 	}
-	free(temp);
 	return (1);
 }
 
-int	already_sorted2(int *stack, t_temp_stack *temp, int first, int last)
+int	is_sorted(int *stack, int size)
 {
 	int	i;
 
-	i = first;
-	while (i < last)
+	i = 1;
+	while (i < size)
 	{
-		if (temp->stack[i] != stack[i])
+		if (stack[i] < stack[i - 1])
 			return (0);
 		i++;
 	}

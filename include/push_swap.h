@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:49:58 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/26 15:56:44 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/27 15:14:17 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,6 @@
 # include "libft.h"
 # include <limits.h>
 
-typedef struct s_temp
-{
-	int	*stack;
-	int	len;
-}	t_temp_stack;
-
 typedef struct s_stack
 {
 	int	*a;
@@ -29,6 +23,7 @@ typedef struct s_stack
 	int	size_a;
 	int	size_b;
 	int	ocnt;
+	int	*sorted;
 }	t_stack;
 
 //	Initiate the stack
@@ -36,8 +31,11 @@ void	stack_init(char **s, t_stack *stack);
 
 //	Check funtions
 int		already_sorted(t_stack *stack, int first, int last);
+int		is_sorted(int *stack, int size);
 void	cpy_stack(int *dest, int *src, int size);
-int		already_sorted2(int *stack, t_temp_stack *temp, int first, int last);
+
+//	sort
+void	sort_a(t_stack *stack);
 
 //	Validation
 int		is_less_than_int_min(int n, char *str);
@@ -62,7 +60,6 @@ void	reverse_quicksort(int *array, int low, int high);
 int		get_first(t_stack *stack, int *temp, int len);
 int		get_last(t_stack *stack, int *temp, int len);
 int		get_least_moves(int size, int index);
-int		solve(t_stack *stack, t_temp_stack *temp_a, t_temp_stack *temp_b, int i);
 int		get_index(int *stack, int size, int n);
 
 //	Operataions

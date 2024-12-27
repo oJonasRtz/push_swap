@@ -6,7 +6,7 @@
 #    By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 11:11:14 by jopereir          #+#    #+#              #
-#    Updated: 2024/12/26 10:32:53 by jopereir         ###   ########.fr        #
+#    Updated: 2024/12/27 12:43:01 by jopereir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRC_DIR = src
 SRCS = already_sorted.c events.c ft_init.c ft_solve_low.c ft_solve_low_utils.c \
 	operations.c operations2.c operations3.c push.c reverse_rotate.c rotate.c \
 	swap.c validation_utils.c validation.c ft_solve_high.c ft_solve_high_utils.c \
-	reverse_quicksort.c move_to_top.c
+	move_to_top.c
 	
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 OBJ = $(SRC:.c=.o)
