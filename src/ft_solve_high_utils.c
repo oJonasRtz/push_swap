@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:38:49 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/28 13:43:15 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/28 14:06:27 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,3 +28,5 @@ int	min(int *stack, int size)
 {
 	return (stack[get_smaller_index(stack, size)]);
 }
+
+int	check_best_push(t_stack *stack);

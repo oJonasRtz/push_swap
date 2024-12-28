@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:38:49 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/28 13:47:39 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/28 14:07:55 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ static void	sort_b(t_stack *stack)
 {
 	int	num_push;
 
-	num_push = stack->a[0];
+	//Work on check_best_push(); solve_high_utils.c
+	num_push = check_best_push(stack);
 	check_pos_b(stack, num_push);
 	ft_pb(stack, 1);
 	if (stack->size_a == 3)

@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:49:58 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/28 12:16:03 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/28 14:07:01 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int		get_least_moves(int size, int index);
 int		get_index(int *stack, int n);
 int		min(int *stack, int size);
 int		max(int *stack, int size);
+int		check_best_push(t_stack *stack);;
 
 //	Operataions
 void	ft_sa(t_stack *stack, int flag);
