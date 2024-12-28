@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:38:49 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/27 14:23:35 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/28 12:00:41 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ int	get_least_moves(int size, int index)
 // 	free(temp);
 // }
 
-// static void	move_to_b(t_stack *stack, int *temp_b, int len)
+// static void	move_to_b(t_stack *stack, int *sorted, int len)
 // {
 // 	int	first;
 // 	int	last;
 // 	int	min_dist;
 
-// 	first = get_first(stack, temp_b, len);
-// 	last = get_last(stack, temp_b, len);
+// 	first = get_first(stack, sorted, len);
+// 	last = get_last(stack, sorted, len);
 // 	min_dist = first;
 // 	if (min_dist == 0)
 // 		return (ft_pb(stack, 1));
@@ -88,38 +88,38 @@ int	get_least_moves(int size, int index)
 // 	ft_double_free(temp_a.stack, temp_b.stack);
 // }
 
-static void	check_duo_a(t_stack *stack, int i)
-{
-	if (stack->a[0] > stack->a[1])
-		ft_sa(stack, 1);
-	double_operation(stack, &ft_ra, 2, 1);
-	i++;
-	if (i >= stack->size_a)
-	{
-		if (stack->size_a % 2 != 0
-			&& get_smaller_num(stack->a, stack->size_a) != 0)
-			ft_ra(stack, 1);
-		if (stack->a[0] > stack->a[2])
-			double_operation(stack, &ft_ra, 2, 1);
-		return ;
-	}
-	return (check_duo_a(stack, i));
-}
+// static void	check_duo_a(t_stack *stack, int i)
+// {
+// 	if (stack->a[0] > stack->a[1])
+// 		ft_sa(stack, 1);
+// 	double_operation(stack, &ft_ra, 2, 1);
+// 	i++;
+// 	if (i >= stack->size_a)
+// 	{
+// 		if (stack->size_a % 2 != 0
+// 			&& get_smaller_num(stack->a, stack->size_a) != 0)
+// 			ft_ra(stack, 1);
+// 		if (stack->a[0] > stack->a[2])
+// 			double_operation(stack, &ft_ra, 2, 1);
+// 		return ;
+// 	}
+// 	return (check_duo_a(stack, i));
+// }
 
-static void	check_duo_b(t_stack *stack, int i)
-{
-	if (stack->b[0] > stack->b[1])
-		ft_sb(stack, 1);
-	double_operation(stack, &ft_rb, 2, 1);
-	i++;
-	if (i >= stack->size_b)
-	{
-		if (stack->b[0] > stack->b[2])
-			double_operation(stack, &ft_rb, 2, 1);
-		return ;
-	}
-	return (check_duo_b(stack, i));
-}
+// static void	check_duo_b(t_stack *stack, int i)
+// {
+// 	if (stack->b[0] > stack->b[1])
+// 		ft_sb(stack, 1);
+// 	double_operation(stack, &ft_rb, 2, 1);
+// 	i++;
+// 	if (i >= stack->size_b)
+// 	{
+// 		if (stack->b[0] > stack->b[2])
+// 			double_operation(stack, &ft_rb, 2, 1);
+// 		return ;
+// 	}
+// 	return (check_duo_b(stack, i));
+// }
 
 // static void	solve(t_stack *stack, int i)
 // {
@@ -132,10 +132,32 @@ static void	check_duo_b(t_stack *stack, int i)
 // 	return (solve(stack, i));
 //}
 
+static int	find_pos_b(t_stack *stack, int num_push)
+{
+	int	i;
+
+	i = 1;
+	if (num_push > stack->b[get_bigger_index(stack->b, stack->size_b)])
+		i = 0;
+	else if (num_push > max(stack->b, stack->size_b)
+		|| num_push < min(stack->b, stack->size_b))
+		i = get_bigger_index(stack->b, stack->size_b);
+	else
+	{
+		while (i + 1 < stack->size_b
+			&& (stack->b[i] < num_push || stack->b[i + 1] > num_push))
+			i++;
+	}
+	return (i);
+}
+
+static void	sort_b(t_stack *stack);
+
+static void	sort_a(t_stack *stack);
+
 void	large_sort(t_stack *stack)
 {
-	check_duo_a(stack, 0);
+	double_operation(stack, &ft_pb, 2, 1);
+	sort_b(stack);
 	sort_a(stack);
-	check_duo_b(stack, 0);
-	// solve(stack, 0);
 }

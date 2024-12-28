@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 10:49:18 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/26 12:02:12 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/28 11:51:53 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,15 @@ int	get_index(int *stack, int size, int n)
 	int	i;
 
 	i = 0;
-	while (i < size)
-	{
-		if (stack[i] == n)
-			return (i);
+	while (stack[i] != n)
 		i++;
-	}
-	return (-1);
+	return (i);
 }
 
 /*
 	Returns the index of the biggest number
 */
-int	get_bigger_num(int *n, int array_size)
+int	get_bigger_index(int *n, int array_size)
 {
 	int	i;
 	int	index;
@@ -45,7 +41,7 @@ int	get_bigger_num(int *n, int array_size)
 	return (index);
 }
 
-int	get_smaller_num(int *n, int array_size)
+int	get_smaller_index(int *n, int array_size)
 {
 	int	i;
 	int	index;

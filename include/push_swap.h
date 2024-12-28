@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:49:58 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/27 15:14:17 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/28 11:51:06 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,6 @@ int		already_sorted(t_stack *stack, int first, int last);
 int		is_sorted(int *stack, int size);
 void	cpy_stack(int *dest, int *src, int size);
 
-//	sort
-void	sort_a(t_stack *stack);
-
 //	Validation
 int		is_less_than_int_min(int n, char *str);
 int		validate_stack(t_stack *stack, char **argv);
@@ -49,8 +46,8 @@ void	ft_rotate(int **n, int array_size);
 void	ft_reverse_rotate(int **n, int array_size);
 
 //	Solve utils
-int		get_bigger_num(int *n, int array_size);
-int		get_smaller_num(int *n, int array_size);
+int		get_bigger_index(int *n, int array_size);
+int		get_smaller_index(int *n, int array_size);
 int		partially_sorted(t_stack *stack);
 void	double_operation(t_stack *stack,
 			void (*f)(t_stack *, int), int n, int flag);
@@ -61,6 +58,8 @@ int		get_first(t_stack *stack, int *temp, int len);
 int		get_last(t_stack *stack, int *temp, int len);
 int		get_least_moves(int size, int index);
 int		get_index(int *stack, int size, int n);
+int		min(int *stack, int size);
+int		max(int *stack, int size);
 
 //	Operataions
 void	ft_sa(t_stack *stack, int flag);

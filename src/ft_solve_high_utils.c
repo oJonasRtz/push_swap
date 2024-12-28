@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:38:49 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/27 15:14:04 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/28 11:51:28 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,3 +85,13 @@
 // 	}
 // 	return (-1);
 // }
+
+int	max(int *stack, int size)
+{
+	return (stack[get_bigger_index(stack, size)]);
+}
+
+int	min(int *stack, int size)
+{
+	return (stack[get_smaller_index(stack, size)]);
+}

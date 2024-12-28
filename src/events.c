@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 11:53:59 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/27 15:16:07 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/28 10:11:29 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,7 @@ int	execute(t_stack *stack)
 	if (stack->size_a <= 7)
 		tiny_sort(stack);
 	else
-	{
-		i = stack->size_a / 2;
-		while (i-- > 0)
-			ft_pb(stack, 1);
 		large_sort(stack);
-	}
 	//Essas duas linhas devem ser apagadas antes de enviar o projeto pra avaliação
 	show_stack(stack);
 	i = 0;
@@ -76,7 +71,7 @@ int	destroy(t_stack *stack, char *message)
 	if (stack->b)
 		free(stack->b);
 	if (stack->sorted)
-		free(stack->size_a);
+		free(stack->sorted);
 	set_null(stack);
 	if (message)
 		ft_printf("%s\n", message);

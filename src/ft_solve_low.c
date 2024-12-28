@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 10:49:18 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/26 10:32:33 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/28 11:52:17 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static void	ft_case3(t_stack *stack)
 
 	if (already_sorted(stack, 0, stack->size_a))
 		return ;
-	bigger_num = get_bigger_num(stack->a, stack->size_a);
-	smaller_num = get_smaller_num(stack->a, stack->size_a);
+	bigger_num = get_bigger_index(stack->a, stack->size_a);
+	smaller_num = get_smaller_index(stack->a, stack->size_a);
 	if (bigger_num == stack->size_a - 1)
 		ft_sa(stack, 1);
 	else if (bigger_num == 0 && smaller_num == stack->size_a - 1)
@@ -46,7 +46,7 @@ void	move_smaller_to_b(t_stack *stack, int flag)
 {
 	int		smaller_index;
 
-	smaller_index = get_smaller_num(stack->a, stack->size_a);
+	smaller_index = get_smaller_index(stack->a, stack->size_a);
 	if (smaller_index != 0)
 		move_to_top(stack, smaller_index, 'a');
 	ft_pb(stack, flag);
