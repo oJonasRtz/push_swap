@@ -6,13 +6,13 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 10:49:18 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/28 11:51:53 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/28 12:15:51 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	get_index(int *stack, int size, int n)
+int	get_index(int *stack, int n)
 {
 	int	i;
 

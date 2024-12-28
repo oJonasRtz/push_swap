@@ -6,158 +6,73 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:38:49 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/28 12:00:41 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/28 13:47:39 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	get_least_moves(int size, int index)
-{
-	if (size - index < index)
-		return (size - index);
-	return (index);
-}
-
-// static int	cpy_stack2(int *dest, int *src, int start, int end)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (start < end)
-// 	{
-// 		dest[i] = src[start];
-// 		i++;
-// 		start++;
-// 	}
-// 	return (i);
-// }
-
-// static void	init_temp(t_temp_stack *temp_a,
-// 	t_temp_stack *temp_b, t_stack *stack)
-// {
-// 	int	*temp;
-
-// 	temp = ft_calloc(stack->size_a, sizeof(int));
-// 	cpy_stack(temp, stack->a, stack->size_a);
-// 	ft_quicksort(temp, 0, stack->size_a - 1);
-// 	temp_b->len = cpy_stack2(temp_b->stack, temp, 0, stack->size_a / 2);
-// 	temp_a->len = cpy_stack2(temp_a->stack, temp,
-// 			stack->size_a / 2 + (stack->size_a % 2 != 0), stack->size_a);
-// 	reverse_quicksort(temp_b->stack, 0, temp_b->len - 1);
-// 	free(temp);
-// }
-
-// static void	move_to_b(t_stack *stack, int *sorted, int len)
-// {
-// 	int	first;
-// 	int	last;
-// 	int	min_dist;
-
-// 	first = get_first(stack, sorted, len);
-// 	last = get_last(stack, sorted, len);
-// 	min_dist = first;
-// 	if (min_dist == 0)
-// 		return (ft_pb(stack, 1));
-// 	if (get_least_moves(stack->size_a, last) < first)
-// 		min_dist = last;
-// 	move_to_top(stack, min_dist, 'a');
-// 	ft_pb(stack, 1);
-// }
-
-// void	large_sort(t_stack *stack)
-// {
-// 	t_temp_stack	temp_a;
-// 	t_temp_stack	temp_b;
-// 	int				i;
-// 	int				op;
-
-// 	temp_b.stack = ft_calloc(stack->size_a / 2, sizeof(int));
-// 	temp_a.stack = ft_calloc(stack->size_a / 2
-// 			+ (stack->size_a % 2 != 0), sizeof(int));
-// 	init_temp(&temp_a, &temp_b, stack);
-// 	op = temp_b.len;
-// 	i = 0;
-// 	while (i < temp_b.len)
-// 	{
-// 		move_to_b(stack, temp_b.stack, op);
-// 		i++;
-// 	}
-// 	solve(stack, &temp_a, &temp_b, 0);
-// 	double_operation(stack, &ft_pa, op, 1);
-// 	ft_double_free(temp_a.stack, temp_b.stack);
-// }
-
-// static void	check_duo_a(t_stack *stack, int i)
-// {
-// 	if (stack->a[0] > stack->a[1])
-// 		ft_sa(stack, 1);
-// 	double_operation(stack, &ft_ra, 2, 1);
-// 	i++;
-// 	if (i >= stack->size_a)
-// 	{
-// 		if (stack->size_a % 2 != 0
-// 			&& get_smaller_num(stack->a, stack->size_a) != 0)
-// 			ft_ra(stack, 1);
-// 		if (stack->a[0] > stack->a[2])
-// 			double_operation(stack, &ft_ra, 2, 1);
-// 		return ;
-// 	}
-// 	return (check_duo_a(stack, i));
-// }
-
-// static void	check_duo_b(t_stack *stack, int i)
-// {
-// 	if (stack->b[0] > stack->b[1])
-// 		ft_sb(stack, 1);
-// 	double_operation(stack, &ft_rb, 2, 1);
-// 	i++;
-// 	if (i >= stack->size_b)
-// 	{
-// 		if (stack->b[0] > stack->b[2])
-// 			double_operation(stack, &ft_rb, 2, 1);
-// 		return ;
-// 	}
-// 	return (check_duo_b(stack, i));
-// }
-
-// static void	solve(t_stack *stack, int i)
-// {
-// 	ft_pa(stack, 1);
-// 	if (stack->a[0] > stack->a[1])
-// 		ft_sa(stack, 1);
-// 	i++;
-// 	if (i >= stack->size_a)
-// 		return ;
-// 	return (solve(stack, i));
-//}
-
-static int	find_pos_b(t_stack *stack, int num_push)
+static void	check_pos_b(t_stack *stack, int num)
 {
 	int	i;
 
-	i = 1;
-	if (num_push > stack->b[get_bigger_index(stack->b, stack->size_b)])
-		i = 0;
-	else if (num_push > max(stack->b, stack->size_b)
-		|| num_push < min(stack->b, stack->size_b))
-		i = get_bigger_index(stack->b, stack->size_b);
-	else
+	if (num > max(stack->b, stack->size_b)
+		|| num < min(stack->b, stack->size_b))
+		move_to_top(stack, get_bigger_index(stack->b, stack->size_b), 'b');
+	else if (num < max(stack->b, stack->size_b)
+		&& num > min(stack->b, stack->size_b))
 	{
-		while (i + 1 < stack->size_b
-			&& (stack->b[i] < num_push || stack->b[i + 1] > num_push))
-			i++;
+		i = 1;
+		if (num > stack->b[stack->size_b / 2])
+			while (!(num > stack->b[0] && num < stack->b[stack->size_b - 1]))
+				ft_rb(stack, 1);
+		else
+			while (!(num > stack->b[0] && num < stack->b[stack->size_b - 1]))
+				ft_rrb(stack, 1);
 	}
-	return (i);
 }
 
-static void	sort_b(t_stack *stack);
+static void	sort_a(t_stack *stack)
+{
+	tiny_sort(stack);
+	if (max(stack->a, stack->size_a) > stack->b[0])
+		move_to_top(stack, get_bigger_index(stack->a, stack->size_a), 'a');
+}
 
-static void	sort_a(t_stack *stack);
+static void	sort_b(t_stack *stack)
+{
+	int	num_push;
+
+	num_push = stack->a[0];
+	check_pos_b(stack, num_push);
+	ft_pb(stack, 1);
+	if (stack->size_a == 3)
+	{
+		move_to_top(stack, get_bigger_index(stack->b, stack->size_b), 'b');
+		return ;
+	}
+	return (sort_b(stack));
+}
+
+static void	push_to_a(t_stack *stack)
+{
+	int	last_a;
+
+	last_a = stack->a[stack->size_a - 1];
+	if (last_a > stack->b[0]
+		&& last_a != max(stack->a, stack->size_a))
+		ft_rra(stack, 1);
+	else
+		ft_pa(stack, 1);
+	if (stack->size_b == 0)
+		return ;
+	return (push_to_a(stack));
+}
 
 void	large_sort(t_stack *stack)
 {
 	double_operation(stack, &ft_pb, 2, 1);
 	sort_b(stack);
 	sort_a(stack);
+	push_to_a(stack);
 }

@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 11:53:59 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/28 10:11:29 by jopereir         ###   ########.fr       */
+/*   Updated: 2024/12/28 12:15:26 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ static void	set_null(t_stack *stack)
 	stack->ocnt = 0;
 }
 
-static void	show_stack(t_stack *stack)
+static void	show_stack(int *stack, int size, char *text)
 {
 	int	i;
 
 	i = 0;
-	ft_printf("Stack A: ");
-	while (i < stack->size_a)
-		ft_printf("%d ", stack->a[i++]);
+	ft_printf("%s", text);
+	while (i < size)
+		ft_printf("%d ", stack[i++]);
 	ft_printf("\n");
 }
 
@@ -45,19 +45,13 @@ int	create(char **argv, t_stack *stack)
 
 int	execute(t_stack *stack)
 {
-	int	i;
-
 	if (stack->size_a <= 7)
 		tiny_sort(stack);
 	else
 		large_sort(stack);
 	//Essas duas linhas devem ser apagadas antes de enviar o projeto pra avaliação
-	show_stack(stack);
-	i = 0;
-	ft_printf("Stack B: ");
-	while (i < stack->size_b)
-		ft_printf("%d ", stack->b[i++]);
-	ft_printf("\n");
+	show_stack(stack->a, stack->size_a, "Stack A:");
+	show_stack(stack->b, stack->size_b, "Stack B:");
 	ft_printf("Size_a: %d Operations: %d\n", stack->size_a, stack->ocnt);
 
 	destroy(stack, NULL);
