@@ -29,4 +29,25 @@ int	min(int *stack, int size)
 	return (stack[get_smaller_index(stack, size)]);
 }
 
-int	check_best_push(t_stack *stack);
+int	check_best_push(t_stack *stack)
+{
+	// int	i;
+	// int	cost;
+	// int	best_cost;
+	// int	best_index;
+
+	// i = 0;
+	// best_cost = INT_MAX;
+	// best_index = -1;
+	// while (i < stack->size_a)
+	// {
+	// 	cost = get_least_moves(stack->size_a, i);
+	// 	if (cost < best_cost)
+	// 	{
+	// 		best_cost = cost;
+	// 		best_index = i;
+	// 	}
+	// 	i++;
+	// }
+	return (stack->a[0]);
+}

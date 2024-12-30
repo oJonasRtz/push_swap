@@ -14,15 +14,12 @@
 
 static void	check_pos_b(t_stack *stack, int num)
 {
-	int	i;
-
 	if (num > max(stack->b, stack->size_b)
 		|| num < min(stack->b, stack->size_b))
 		move_to_top(stack, get_bigger_index(stack->b, stack->size_b), 'b');
 	else if (num < max(stack->b, stack->size_b)
 		&& num > min(stack->b, stack->size_b))
 	{
-		i = 1;
 		if (num > stack->b[stack->size_b / 2])
 			while (!(num > stack->b[0] && num < stack->b[stack->size_b - 1]))
 				ft_rb(stack, 1);
@@ -34,9 +31,10 @@ static void	check_pos_b(t_stack *stack, int num)
 
 static void	sort_a(t_stack *stack)
 {
-	tiny_sort(stack);
+	if (!already_sorted(stack, 0, stack->size_a))
+		tiny_sort(stack);
 	if (max(stack->a, stack->size_a) > stack->b[0])
-		move_to_top(stack, get_bigger_index(stack->a, stack->size_a), 'a');
+		ft_rra(stack, 1);
 }
 
 static void	sort_b(t_stack *stack)
