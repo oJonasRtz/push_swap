@@ -60,7 +60,7 @@ int		get_least_moves(int size, int index);
 int		get_index(int *stack, int n);
 int		min(int *stack, int size);
 int		max(int *stack, int size);
-int		check_best_push(t_stack *stack);;
+void	check_best_push(t_stack *stack);
 
 //	Operataions
 void	ft_sa(t_stack *stack, int flag);

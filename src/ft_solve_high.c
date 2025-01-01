@@ -12,6 +12,7 @@
 
 #include "push_swap.h"
 
+
 static void	check_pos_b(t_stack *stack, int num)
 {
 	if (num > max(stack->b, stack->size_b)
@@ -31,19 +32,15 @@ static void	check_pos_b(t_stack *stack, int num)
 
 static void	sort_a(t_stack *stack)
 {
-	if (!already_sorted(stack, 0, stack->size_a))
-		tiny_sort(stack);
-	if (max(stack->a, stack->size_a) > stack->b[0])
+	tiny_sort(stack);
+	if (stack->a[2] > stack->b[0])
 		ft_rra(stack, 1);
 }
 
 static void	sort_b(t_stack *stack)
 {
-	int	num_push;
-
-	//Work on check_best_push(); solve_high_utils.c
-	num_push = check_best_push(stack);
-	check_pos_b(stack, num_push);
+	check_best_push(stack);
+	check_pos_b(stack, stack->a[0]);
 	ft_pb(stack, 1);
 	if (stack->size_a == 3)
 	{
@@ -74,4 +71,6 @@ void	large_sort(t_stack *stack)
 	sort_b(stack);
 	sort_a(stack);
 	push_to_a(stack);
+	if (get_smaller_index(stack->a, stack->size_a) != 0)
+		move_to_top(stack, get_smaller_index(stack->a, stack->size_a), 'a');
 }

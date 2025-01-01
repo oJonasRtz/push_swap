@@ -16,7 +16,7 @@ SRC_DIR = src
 SRCS = already_sorted.c events.c ft_init.c ft_solve_low.c ft_solve_low_utils.c \
 	operations.c operations2.c operations3.c push.c reverse_rotate.c rotate.c \
 	swap.c validation_utils.c validation.c ft_solve_high.c ft_solve_high_utils.c \
-	move_to_top.c
+	move_to_top.c best_push.c
 	
 SRC = $(addprefix $(SRC_DIR)/, $(SRCS))
 OBJ = $(SRC:.c=.o)
