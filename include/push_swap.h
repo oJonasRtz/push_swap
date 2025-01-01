@@ -26,6 +26,16 @@ typedef struct s_stack
 	int	*sorted;
 }	t_stack;
 
+typedef struct s_cost
+{
+	int	cost_a;
+	int	cost_b;
+	int	total_cost;
+	int	index;
+	int	num;
+}	t_cost;
+
+
 //	Initiate the stack
 void	stack_init(char **s, t_stack *stack);
 
@@ -60,7 +70,7 @@ int		get_least_moves(int size, int index);
 int		get_index(int *stack, int n);
 int		min(int *stack, int size);
 int		max(int *stack, int size);
-void	check_best_push(t_stack *stack);
+t_cost	check_best_push(t_stack *stack);
 
 //	Operataions
 void	ft_sa(t_stack *stack, int flag);
