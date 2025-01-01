@@ -12,27 +12,27 @@
 
 #include "push_swap.h"
 
-
-static void	check_pos_b(t_stack *stack, t_cost *cost)
+void	check_pos_b(t_stack *stack, int	num)
 {
-	if (cost->num > max(stack->b, stack->size_b)
-		|| cost->num < min(stack->b, stack->size_b))
+	if (num > max(stack->b, stack->size_b)
+		|| num < min(stack->b, stack->size_b))
 		move_to_top(stack, get_bigger_index(stack->b, stack->size_b), 'b');
-	else if (cost->num < max(stack->b, stack->size_b)
-		&& cost->num > min(stack->b, stack->size_b))
+	else if (num < max(stack->b, stack->size_b)
+		&& num > min(stack->b, stack->size_b))
 	{
-		if (cost->num > stack->b[stack->size_b / 2])
-			while (!(cost->num > stack->b[0] && cost->num < stack->b[stack->size_b - 1]))
+		if (num > stack->b[stack->size_b / 2])
+			while (!(num > stack->b[0] && num < stack->b[stack->size_b - 1]))
 				ft_rb(stack, 1);
 		else
-			while (!(cost->num > stack->b[0] && cost->num < stack->b[stack->size_b - 1]))
+			while (!(num > stack->b[0] && num < stack->b[stack->size_b - 1]))
 				ft_rrb(stack, 1);
 	}
 }
 
 static void	sort_a(t_stack *stack)
 {
-	tiny_sort(stack);
+	if (!already_sorted(stack, 0, stack->size_a))
+		tiny_sort(stack);
 	if (stack->a[2] > stack->b[0])
 		ft_rra(stack, 1);
 }
@@ -42,7 +42,9 @@ static void	sort_b(t_stack *stack)
 	t_cost	cost;
 
 	cost = check_best_push(stack);
-	check_pos_b(stack, &cost);
+	move_both(stack, &cost);
+	//move_to_top(stack, cost.index_a, 'a');
+	//check_pos_b(stack, stack->a[0]);
 	ft_pb(stack, 1);
 	if (stack->size_a == 3)
 	{

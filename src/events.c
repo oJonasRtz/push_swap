@@ -53,7 +53,8 @@ int	execute(t_stack *stack)
 	show_stack(stack->a, stack->size_a, "Stack A:");
 	show_stack(stack->b, stack->size_b, "Stack B:");
 	ft_printf("Size_a: %d Operations: %d\n", stack->size_a, stack->ocnt);
-
+	ft_printf("Sorted: %d\n", already_sorted(stack, 0, stack->size_a));
+	
 	destroy(stack, NULL);
 	return (1);
 }

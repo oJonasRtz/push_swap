@@ -26,13 +26,19 @@ typedef struct s_stack
 	int	*sorted;
 }	t_stack;
 
+/*
+	num and index is for stack a
+	target is stack b
+*/
 typedef struct s_cost
 {
 	int	cost_a;
 	int	cost_b;
 	int	total_cost;
-	int	index;
-	int	num;
+	int	index_a;
+	int	num_a;
+	int	num_b;
+	int	index_b;
 }	t_cost;
 
 
@@ -63,6 +69,7 @@ void	double_operation(t_stack *stack,
 			void (*f)(t_stack *, int), int n, int flag);
 void	move_smaller_to_b(t_stack *stack, int flag);
 void	move_to_top(t_stack *stack, int num, char a_or_b);
+void	move_both(t_stack *stack, t_cost *cost);
 void	reverse_quicksort(int *array, int low, int high);
 int		get_first(t_stack *stack, int *temp, int len);
 int		get_last(t_stack *stack, int *temp, int len);
@@ -71,6 +78,7 @@ int		get_index(int *stack, int n);
 int		min(int *stack, int size);
 int		max(int *stack, int size);
 t_cost	check_best_push(t_stack *stack);
+void	check_pos_b(t_stack *stack, int	num);
 
 //	Operataions
 void	ft_sa(t_stack *stack, int flag);
