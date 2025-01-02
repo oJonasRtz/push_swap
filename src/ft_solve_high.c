@@ -6,29 +6,17 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:38:49 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/02 11:26:24 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/02 13:38:55 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_pos_b(t_stack *stack, int num)
+void	check_pos_b(t_stack *stack, t_cost *cost)
 {
-	if (num > stack->b[0] && num < stack->b[stack->size_b - 1])
+	if (cost->index_b == 0)
 		return ;
-	if (num > max(stack->b, stack->size_b)
-		|| num < min(stack->b, stack->size_b))
-		move_to_top(stack, get_bigger_index(stack->b, stack->size_b), 'b');
-	else if (num < max(stack->b, stack->size_b)
-		&& num > min(stack->b, stack->size_b))
-	{
-		if (num > stack->b[stack->size_b / 2])
-			while (!(num > stack->b[0] && num < stack->b[stack->size_b - 1]))
-				ft_rb(stack, 1);
-		else
-			while (!(num > stack->b[0] && num < stack->b[stack->size_b - 1]))
-				ft_rrb(stack, 1);
-	}
+	move_to_top(stack, cost->index_b, 'b');
 }
 
 static void	sort_a(t_stack *stack)
@@ -44,11 +32,16 @@ static void	sort_b(t_stack *stack)
 	t_cost	cost;
 
 	cost = check_best_push(stack);
+	ft_printf("best_a: %d\n", cost.num_a);
+	ft_printf("index_a: %d\n", cost.index_a);
+	ft_printf("target: %d\n", cost.num_b);
+	ft_printf("index_b: %d\n", cost.index_b);
+	ft_printf("moves: %d\n", cost.total_cost);
+	show_stack(stack->a, stack->size_a, "Stack A:");
+	show_stack(stack->b, stack->size_b, "Stack B:");
 	move_both(stack, &cost);
-	//move_to_top(stack, cost.index_a, 'a');
-	//check_pos_b(stack, stack->a[0]);
 	ft_pb(stack, 1);
-	if (stack->size_a == 3)
+	if (stack->size_a == 3 || already_sorted(stack, 0, stack->size_a))
 	{
 		move_to_top(stack, get_bigger_index(stack->b, stack->size_b), 'b');
 		return ;

@@ -6,68 +6,81 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:38:49 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/02 11:24:13 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/02 13:27:32 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	check_a(t_stack *stack, int num)
+static int	check_b(t_stack *stack, t_cost *cost)
 {
-	int	i;
+	int	temp;
 
-	if (num == stack->a[0])
-		return (0);
-	i = 0;
-	while (stack->a[i] != num)
-		i++;
-	return (get_least_moves(stack->size_a, i));
+	temp = get_target_b(stack, cost);
+	return (temp);
 }
 
-static int	check_b(t_stack *stack, int num)
+static int	check_a(t_stack *stack, t_cost *cost, int index)
 {
-	int	i;
-	int	j;
-	int	cost_up;
-	int	cost_down;
+	int	move_top;
+	int	num;
 
-	if (num > max(stack->b, stack->size_b)
-		|| num < min(stack->b, stack->size_b))
-		return (get_least_moves(stack->size_b,
-				get_bigger_index(stack->b, stack->size_b)));
-	i = 0;
-	while (stack->b[i] > num && i < stack->size_b)
-		i++;
-	j = stack->size_b - 1;
-	while (stack->b[j] < num && j >= 0)
-		j--;
-	cost_up = get_least_moves(stack->size_b, i);
-	cost_down = get_least_moves(stack->size_b, j);
-	if (cost_down < cost_up)
-		return (cost_down);
-	return (cost_up);
+	num = stack->a[index];
+	move_top = get_least_moves(stack->size_a, index);
+	cost->num_a = num;
+	move_top += check_b(stack, cost);
+	return (move_top);
+}
+
+static void	check_rr_rrr(t_stack *stack, t_cost *cost)
+{
+	cost->rr_moves = 0;
+	cost->rrr_moves = 0;
+	if (cost->index_a != 0 && cost->index_b != 0)
+	{
+		if (cost->index_a <= stack->size_a / 2
+			&& cost->index_b <= stack->size_b / 2)
+			cost->rr_moves = get_smaller_value(cost->cost_a, cost->cost_b);
+		else if (cost->index_a > stack->size_a / 2
+			&& cost->index_b > stack->size_b / 2)
+			cost->rrr_moves = get_smaller_value(cost->cost_a, cost->cost_b);
+	}
+}
+
+static void	init_cost(t_stack *stack, t_cost *cost)
+{
+	cost->total_cost = INT_MAX;
+	cost->index_a = 0;
+	cost->num_a = stack->a[0];
+	cost->cost_a = 0;
+	cost->cost_b = 0;
 }
 
 t_cost	check_best_push(t_stack *stack)
 {
 	t_cost	cost;
 	int		i;
+	int		temp_a;
+	//int		temp_b;
 
 	i = 0;
-	cost.total_cost = INT_MAX;
-	cost.index_a = 0;
+	init_cost(stack, &cost);
 	while (i < stack->size_a)
 	{
-		cost.cost_a = check_a(stack, stack->a[i]);
-		cost.cost_b = check_b(stack, stack->a[i]);
-		if (cost.cost_a + cost.cost_b + 1 < cost.total_cost)
+		temp_a = check_a(stack, &cost, i);
+		//temp_b = check_b(stack, &cost);
+		if (temp_a + 1 < cost.total_cost)
 		{
-			cost.total_cost = cost.cost_a + cost.cost_b + 1;
+			cost.total_cost = temp_a + 1;
+			cost.cost_a = temp_a;
+			cost.cost_b = check_b(stack, &cost);
 			cost.index_a = i;
-			cost.num_a = stack->a[i];
 		}
 		i++;
 	}
+	cost.num_a = stack->a[cost.index_a];
 	get_target_b(stack, &cost);
+	stack->operations_expected += cost.total_cost;
+	check_rr_rrr(stack, &cost);
 	return (cost);
 }

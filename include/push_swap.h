@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:49:58 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/02 11:21:07 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/02 13:36:30 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_stack
 	int	size_b;
 	int	ocnt;
 	int	*sorted;
+	int	operations_expected;
 }	t_stack;
 
 /*
@@ -39,8 +40,11 @@ typedef struct s_cost
 	int	num_a;
 	int	num_b;
 	int	index_b;
-}	t_cost;
 
+	int	rr_moves;
+	int	rrr_moves;
+}	t_cost;
+void	show_stack(int *stack, int size, char *text);
 //	Initiate the stack
 void	stack_init(char **s, t_stack *stack);
 
@@ -77,9 +81,10 @@ int		get_index(int *stack, int n);
 int		min(int *stack, int size);
 int		max(int *stack, int size);
 t_cost	check_best_push(t_stack *stack);
-void	check_pos_b(t_stack *stack, int num);
-void	get_target_b(t_stack *stack, t_cost *cost);
-
+void	check_pos_b(t_stack *stack, t_cost *cost);
+int		get_target_b(t_stack *stack, t_cost *cost);
+int		get_smaller_value(int n1, int n2);
+int		check1(t_stack *stack, t_cost *cost, int flag);
 //	Operataions
 void	ft_sa(t_stack *stack, int flag);
 void	ft_sb(t_stack *stack, int flag);

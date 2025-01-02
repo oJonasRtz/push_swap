@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 10:29:28 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/02 11:26:36 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/02 13:33:44 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,17 @@ static	void	move_b(t_stack *stack, int num, int flag)
 	}
 }
 
+int	get_smaller_value(int n1, int n2)
+{
+	if (n2 < n1)
+		return (n2);
+	return (n1);
+}
+
 void	move_both(t_stack *stack, t_cost *cost)
 {
-	if (cost->index_a != 0 && cost->index_b != 0)
-	{
-		if (cost->index_a < stack->size_a / 2
-			&& cost->index_b < stack->size_b / 2)
-			while (cost->index_a-- > 0 && cost->index_b-- > 0)
-				ft_rr(stack, 1);
-		else
-			while (stack->size_a - cost->index_a++ > 0
-				&& stack->size_b - cost->index_b++ > 0)
-				ft_rrr(stack, 1);
-	}
 	move_to_top(stack, cost->index_a, 'a');
-	check_pos_b(stack, stack->a[0]);
+	check_pos_b(stack, cost);
 }
 
 void	move_to_top(t_stack *stack, int num, char a_or_b)

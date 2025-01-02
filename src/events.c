@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 11:53:59 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/28 12:15:26 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/02 13:28:28 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ static void	set_null(t_stack *stack)
 	stack->size_a = 0;
 	stack->size_b = 0;
 	stack->ocnt = 0;
+	stack->operations_expected = 0;
 }
 
-static void	show_stack(int *stack, int size, char *text)
+void	show_stack(int *stack, int size, char *text)
 {
 	int	i;
 
@@ -53,6 +54,7 @@ int	execute(t_stack *stack)
 	show_stack(stack->a, stack->size_a, "Stack A:");
 	show_stack(stack->b, stack->size_b, "Stack B:");
 	ft_printf("Size_a: %d Operations: %d\n", stack->size_a, stack->ocnt);
+	ft_printf("Operations expected: %d\n", stack->operations_expected);
 	ft_printf("Sorted: %d\n", already_sorted(stack, 0, stack->size_a));
 	
 	destroy(stack, NULL);
