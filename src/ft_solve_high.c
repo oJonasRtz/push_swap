@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:38:49 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/02 13:38:55 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/02 15:02:50 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	check_pos_b(t_stack *stack, t_cost *cost)
 
 static void	sort_a(t_stack *stack)
 {
-	if (!already_sorted(stack, 0, stack->size_a))
+	if (!already_sorted(stack, 0, stack->size_a - 1))
 		tiny_sort(stack);
 	if (stack->a[2] > stack->b[0])
 		ft_rra(stack, 1);
@@ -55,7 +55,7 @@ static void	push_to_a(t_stack *stack)
 
 	last_a = stack->a[stack->size_a - 1];
 	if (last_a > stack->b[0]
-		&& last_a != max(stack->a, stack->size_a))
+		&& stack->a[stack->size_a - 1] != max(stack->a, stack->size_a))
 		ft_rra(stack, 1);
 	else
 		ft_pa(stack, 1);

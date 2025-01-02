@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 11:53:59 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/02 13:28:28 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/02 14:59:50 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ int	destroy(t_stack *stack, char *message)
 		free(stack->a);
 	if (stack->b)
 		free(stack->b);
-	if (stack->sorted)
-		free(stack->sorted);
 	set_null(stack);
 	if (message)
 		ft_printf("%s\n", message);

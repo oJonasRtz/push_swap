@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:38:49 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/02 13:27:32 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/02 14:26:09 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,12 @@ t_cost	check_best_push(t_stack *stack)
 	t_cost	cost;
 	int		i;
 	int		temp_a;
-	//int		temp_b;
 
 	i = 0;
 	init_cost(stack, &cost);
 	while (i < stack->size_a)
 	{
 		temp_a = check_a(stack, &cost, i);
-		//temp_b = check_b(stack, &cost);
 		if (temp_a + 1 < cost.total_cost)
 		{
 			cost.total_cost = temp_a + 1;

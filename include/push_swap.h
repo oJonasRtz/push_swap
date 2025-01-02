@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:49:58 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/02 13:36:30 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/02 14:42:31 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ typedef struct s_stack
 	int	size_a;
 	int	size_b;
 	int	ocnt;
-	int	*sorted;
 	int	operations_expected;
 }	t_stack;
 

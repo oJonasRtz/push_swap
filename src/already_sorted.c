@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 10:11:30 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/27 15:15:36 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/02 14:59:11 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,10 @@ int	already_sorted(t_stack *stack, int first, int last)
 {
 	int	i;
 
-	stack->sorted = ft_calloc(stack->size_a, sizeof(int));
-	if (!stack->sorted)
-		destroy(stack, NULL);
-	cpy_stack(stack->sorted, stack->a, stack->size_a);
-	ft_quicksort(stack->sorted, 0, stack->size_a - 1);
-	i = first;
-	while (i < last)
+	i = first + 1;
+	while (i < last && i < stack->size_a)
 	{
-		if (stack->sorted[i] != stack->a[i])
+		if (stack->a[i] < stack->a[i - 1])
 			return (0);
 		i++;
 	}
