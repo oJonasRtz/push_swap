@@ -6,14 +6,16 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:38:49 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/28 14:07:55 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/02 11:26:24 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_pos_b(t_stack *stack, int	num)
+void	check_pos_b(t_stack *stack, int num)
 {
+	if (num > stack->b[0] && num < stack->b[stack->size_b - 1])
+		return ;
 	if (num > max(stack->b, stack->size_b)
 		|| num < min(stack->b, stack->size_b))
 		move_to_top(stack, get_bigger_index(stack->b, stack->size_b), 'b');

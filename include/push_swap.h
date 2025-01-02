@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:49:58 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/28 14:07:01 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/02 11:21:07 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ typedef struct s_cost
 	int	num_b;
 	int	index_b;
 }	t_cost;
-
 
 //	Initiate the stack
 void	stack_init(char **s, t_stack *stack);
@@ -78,7 +77,8 @@ int		get_index(int *stack, int n);
 int		min(int *stack, int size);
 int		max(int *stack, int size);
 t_cost	check_best_push(t_stack *stack);
-void	check_pos_b(t_stack *stack, int	num);
+void	check_pos_b(t_stack *stack, int num);
+void	get_target_b(t_stack *stack, t_cost *cost);
 
 //	Operataions
 void	ft_sa(t_stack *stack, int flag);
