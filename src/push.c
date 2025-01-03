@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:00:57 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/03 10:53:57 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/03 10:26:13 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,24 @@ void	ft_push(int **src, int **dest, int *src_size, int *dest_size)
 	(*dest)[0] = (*src)[0];
 	ft_shift_left(src, src_size);
 	(*src_size)--;
+}
+
+void	ft_pa(t_stack *stack, int flag)
+{
+	ft_push(&stack->b, &stack->a, &stack->size_b, &stack->size_a);
+	if (flag)
+	{
+		stack->ocnt++;
+		ft_printf("pa\n");
+	}
+}
+
+void	ft_pb(t_stack *stack, int flag)
+{
+	ft_push(&stack->a, &stack->b, &stack->size_a, &stack->size_b);
+	if (flag)
+	{
+		stack->ocnt++;
+		ft_printf("pb\n");
+	}
 }

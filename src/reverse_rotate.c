@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:00:57 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/02 13:40:49 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/03 10:25:44 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,35 @@ void	ft_reverse_rotate(int **n, int array_size)
 		i--;
 	}
 	(*n)[i] = temp;
+}
+
+void	ft_rra(t_stack *stack, int flag)
+{
+	ft_reverse_rotate(&stack->a, stack->size_a);
+	if (flag)
+	{
+		stack->ocnt++;
+		ft_printf("rra\n");
+	}
+}
+
+void	ft_rrb(t_stack *stack, int flag)
+{
+	ft_reverse_rotate(&stack->b, stack->size_b);
+	if (flag)
+	{
+		stack->ocnt++;
+		ft_printf("rrb\n");
+	}
+}
+
+void	ft_rrr(t_stack *stack, int flag)
+{
+	ft_reverse_rotate(&stack->a, stack->size_a);
+	ft_reverse_rotate(&stack->b, stack->size_b);
+	if (flag)
+	{
+		stack->ocnt += 2;
+		ft_printf("rrr\n");
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:38:49 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/02 15:02:50 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/03 10:27:11 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	push_to_a(t_stack *stack)
 
 	last_a = stack->a[stack->size_a - 1];
 	if (last_a > stack->b[0]
-		&& stack->a[stack->size_a - 1] != max(stack->a, stack->size_a))
+		&& last_a != max(stack->a, stack->size_a))
 		ft_rra(stack, 1);
 	else
 		ft_pa(stack, 1);

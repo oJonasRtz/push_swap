@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 10:49:18 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/28 11:52:17 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/03 10:35:05 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,25 +51,6 @@ void	move_smaller_to_b(t_stack *stack, int flag)
 		move_to_top(stack, smaller_index, 'a');
 	ft_pb(stack, flag);
 }
-
-// static void	solve_stack(t_stack *stack, int *a, int i)
-// {
-// 	int	smaller;
-
-// 	smaller = get_smaller_num(a, stack->size_a);
-// 	if (smaller != 0)
-// 	{
-// 		if (smaller <= stack->size_a / 2)
-// 			while (smaller-- > 0)
-// 				ft_ra(stack, 1);
-// 		else
-// 			while (smaller++ < stack->size_a)
-// 				ft_rra(stack, 1);
-// 	}
-// 	if (i < stack->size_a)
-// 		solve_stack(stack, &stack->a[i], i + 1);
-// 	return ;
-// }
 
 /*
 	1.Push the 2 smalest numbers to stack b
