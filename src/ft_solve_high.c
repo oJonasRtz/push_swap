@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:38:49 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/03 14:38:56 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/03 15:42:39 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,6 @@ static void	sort_b(t_stack *stack)
 	t_cost	cost;
 
 	cost = check_best_push(stack);
-	show_stack(stack->a, stack->size_a, "Sack A: ");
-	show_stack(stack->b, stack->size_b, "Sack B: ");
-	ft_printf("target a: %d num: %d\n", cost.index_a, cost.num_a);
-	ft_printf("target b: %d num: %d\n", cost.index_b, cost.num_b);
 	move_both(stack, &cost);
 	move_to_top(stack, cost.index_a, 'a');
 	move_to_top(stack, cost.index_b, 'b');
@@ -67,8 +63,6 @@ void	large_sort(t_stack *stack)
 	sort_b(stack);
 	stack->operations_expected += stack->size_b;
 	sort_a(stack);
-	show_stack(stack->a, stack->size_a, "Stack A: ");
-	show_stack(stack->b, stack->size_b, "Stack B: ");
 	push_to_a(stack);
 	if (get_smaller_index(stack->a, stack->size_a) != 0)
 		move_to_top(stack, get_smaller_index(stack->a, stack->size_a), 'a');

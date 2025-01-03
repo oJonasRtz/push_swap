@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 11:53:59 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/03 10:46:36 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/03 16:14:28 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,6 @@ static void	set_null(t_stack *stack)
 	stack->size_b = 0;
 	stack->ocnt = 0;
 	stack->operations_expected = 0;
-}
-
-//	temp function
-void	show_stack(int *stack, int size, char *text)
-{
-	int	i;
-
-	i = 0;
-	ft_printf("%s", text);
-	while (i < size)
-		ft_printf("%d ", stack[i++]);
-	ft_printf("\n");
 }
 
 /*
@@ -61,13 +49,6 @@ int	execute(t_stack *stack)
 		tiny_sort(stack);
 	else
 		large_sort(stack);
-	//Essas duas linhas devem ser apagadas antes de enviar o projeto pra avaliação
-	show_stack(stack->a, stack->size_a, "Stack A:");
-	show_stack(stack->b, stack->size_b, "Stack B:");
-	ft_printf("Size_a: %d Operations: %d\n", stack->size_a, stack->ocnt);
-	ft_printf("Operations expected: %d\n", stack->operations_expected);
-	ft_printf("Sorted: %d\n", already_sorted(stack, 0, stack->size_a));
-	
 	destroy(stack, NULL);
 	return (1);
 }

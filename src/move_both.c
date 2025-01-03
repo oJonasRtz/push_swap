@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 14:22:02 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/03 14:51:52 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/03 15:29:57 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,8 @@ void	move_both(t_stack *stack, t_cost *cost)
 	loops = 0;
 	if (direction)
 		loops = get_smallest_value(cost->cost_a, cost->cost_b);
-	ft_printf("Direção: %d\n", direction);
-	ft_printf("Loops %d\n", loops);
 	if (direction > 0)
 		move_up(stack, cost, loops);
 	else if (direction < 0)
 		move_down(stack, cost, loops);
-	ft_printf("index a: %d\n", cost->index_a);
-	ft_printf("index b: %d\n", cost->index_b);
 }

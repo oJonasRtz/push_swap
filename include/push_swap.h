@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:49:58 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/03 14:23:21 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/03 16:13:10 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef struct s_cost
 }	t_cost;
 
 //	events.c
-void	show_stack(int *stack, int size, char *text);
 int		create(char **argv, t_stack *stack);
 int		execute(t_stack *stack);
 int		destroy(t_stack *stack, char *message);

@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:00:57 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/03 14:13:06 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/03 15:39:33 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,6 @@ void	ft_rrb(t_stack *stack, int flag)
 
 void	ft_rrr(t_stack *stack, int flag)
 {
-	// ft_reverse_rotate(&stack->a, stack->size_a);
-	// ft_reverse_rotate(&stack->b, stack->size_b);
 	ft_rra(stack, 0);
 	ft_rrb(stack, 0);
 	if (flag)
