@@ -6,12 +6,13 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 11:53:59 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/02 14:59:50 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/03 10:46:36 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//Initiate the stacks with 0/NULL values
 static void	set_null(t_stack *stack)
 {
 	stack->a = NULL;
@@ -22,6 +23,7 @@ static void	set_null(t_stack *stack)
 	stack->operations_expected = 0;
 }
 
+//	temp function
 void	show_stack(int *stack, int size, char *text)
 {
 	int	i;
@@ -33,6 +35,11 @@ void	show_stack(int *stack, int size, char *text)
 	ft_printf("\n");
 }
 
+/*
+	Init values
+	Validate the values
+		Quality requisit
+*/
 int	create(char **argv, t_stack *stack)
 {
 	set_null(stack);
@@ -44,6 +51,10 @@ int	create(char **argv, t_stack *stack)
 	return (1);
 }
 
+/*
+	Execute the program
+		Functional requisit
+*/
 int	execute(t_stack *stack)
 {
 	if (stack->size_a <= 7)
@@ -61,6 +72,9 @@ int	execute(t_stack *stack)
 	return (1);
 }
 
+/*
+	free every alloc memmory
+*/
 int	destroy(t_stack *stack, char *message)
 {
 	if (stack->a)

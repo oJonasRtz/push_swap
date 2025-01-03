@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:38:49 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/02 14:29:12 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/03 10:50:07 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,8 @@ int	get_target_b(t_stack *stack, t_cost *cost)
 					&& cost->num_a < stack->b[i - 1]))
 				i++;
 			cost->index_b = i;
-			cost->num_b = stack->b[cost->index_b];
-			return (get_least_moves(stack->size_b, i));
 		}
 	}
 	cost->num_b = stack->b[cost->index_b];
-	return (get_least_moves(stack->size_b, cost->index_b));
+	return (cost->index_b);
 }

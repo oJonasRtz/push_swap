@@ -6,21 +6,13 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:38:49 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/02 14:26:09 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/03 12:06:28 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	check_b(t_stack *stack, t_cost *cost)
-{
-	int	temp;
-
-	temp = get_target_b(stack, cost);
-	return (temp);
-}
-
-static int	check_a(t_stack *stack, t_cost *cost, int index)
+static int	get_cost(t_stack *stack, t_cost *cost, int index)
 {
 	int	move_top;
 	int	num;
@@ -28,12 +20,13 @@ static int	check_a(t_stack *stack, t_cost *cost, int index)
 	num = stack->a[index];
 	move_top = get_least_moves(stack->size_a, index);
 	cost->num_a = num;
-	move_top += check_b(stack, cost);
+	move_top += get_least_moves(stack->size_b, get_target_b(stack, cost));
 	return (move_top);
 }
 
 static void	check_rr_rrr(t_stack *stack, t_cost *cost)
 {
+	return ;
 	cost->rr_moves = 0;
 	cost->rrr_moves = 0;
 	if (cost->index_a != 0 && cost->index_b != 0)
@@ -66,12 +59,13 @@ t_cost	check_best_push(t_stack *stack)
 	init_cost(stack, &cost);
 	while (i < stack->size_a)
 	{
-		temp_a = check_a(stack, &cost, i);
+		temp_a = get_cost(stack, &cost, i);
 		if (temp_a + 1 < cost.total_cost)
 		{
 			cost.total_cost = temp_a + 1;
-			cost.cost_a = temp_a;
-			cost.cost_b = check_b(stack, &cost);
+			cost.cost_a = get_least_moves(stack->size_a, i);
+			cost.cost_b = get_least_moves
+				(stack->size_b, get_target_b(stack, &cost));
 			cost.index_a = i;
 		}
 		i++;
@@ -81,4 +75,18 @@ t_cost	check_best_push(t_stack *stack)
 	stack->operations_expected += cost.total_cost;
 	check_rr_rrr(stack, &cost);
 	return (cost);
+}
+
+int	get_target(t_stack *stack)
+{
+	int	target;
+	int	first;
+	int	last;
+
+	target = -1;
+	first = stack->a[0];
+	last = stack->a[stack->size_a - 1];
+	if (first > last && stack->b[0] < last)
+		target = 0;
+	return (target);
 }

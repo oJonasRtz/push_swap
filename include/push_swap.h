@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:49:58 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/03 10:41:01 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/03 11:22:16 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	cpy_stack(int *dest, int *src, int size);
 
 //	best_push.c
 t_cost	check_best_push(t_stack *stack);
+int		get_target(t_stack *stack);
 
 //	ft_init.c
 void	stack_init(char **s, t_stack *stack);
