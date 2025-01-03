@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:38:49 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/03 12:06:28 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/03 12:23:21 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,6 @@ static int	get_cost(t_stack *stack, t_cost *cost, int index)
 	cost->num_a = num;
 	move_top += get_least_moves(stack->size_b, get_target_b(stack, cost));
 	return (move_top);
-}
-
-static void	check_rr_rrr(t_stack *stack, t_cost *cost)
-{
-	return ;
-	cost->rr_moves = 0;
-	cost->rrr_moves = 0;
-	if (cost->index_a != 0 && cost->index_b != 0)
-	{
-		if (cost->index_a <= stack->size_a / 2
-			&& cost->index_b <= stack->size_b / 2)
-			cost->rr_moves = get_smaller_value(cost->cost_a, cost->cost_b);
-		else if (cost->index_a > stack->size_a / 2
-			&& cost->index_b > stack->size_b / 2)
-			cost->rrr_moves = get_smaller_value(cost->cost_a, cost->cost_b);
-	}
 }
 
 static void	init_cost(t_stack *stack, t_cost *cost)
@@ -73,7 +57,6 @@ t_cost	check_best_push(t_stack *stack)
 	cost.num_a = stack->a[cost.index_a];
 	get_target_b(stack, &cost);
 	stack->operations_expected += cost.total_cost;
-	check_rr_rrr(stack, &cost);
 	return (cost);
 }
 

@@ -6,18 +6,11 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:38:49 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/03 11:55:10 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/03 14:38:56 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	check_pos_b(t_stack *stack, t_cost *cost)
-{
-	if (cost->index_b == 0)
-		return ;
-	move_to_top(stack, cost->index_b, 'b');
-}
 
 static void	sort_a(t_stack *stack)
 {
@@ -34,7 +27,13 @@ static void	sort_b(t_stack *stack)
 	t_cost	cost;
 
 	cost = check_best_push(stack);
+	show_stack(stack->a, stack->size_a, "Sack A: ");
+	show_stack(stack->b, stack->size_b, "Sack B: ");
+	ft_printf("target a: %d num: %d\n", cost.index_a, cost.num_a);
+	ft_printf("target b: %d num: %d\n", cost.index_b, cost.num_b);
 	move_both(stack, &cost);
+	move_to_top(stack, cost.index_a, 'a');
+	move_to_top(stack, cost.index_b, 'b');
 	ft_pb(stack, 1);
 	if (stack->size_a == 3 || already_sorted(stack, 0, stack->size_a))
 	{

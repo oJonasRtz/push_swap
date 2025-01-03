@@ -6,7 +6,7 @@
 #    By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/18 11:11:14 by jopereir          #+#    #+#              #
-#    Updated: 2025/01/03 10:26:27 by jopereir         ###   ########.fr        #
+#    Updated: 2025/01/03 14:23:33 by jopereir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = push_swap
 
 SRC_DIR = src
 SRCS = already_sorted.c events.c ft_init.c ft_solve_low.c ft_solve_low_utils.c \
-	push.c reverse_rotate.c rotate.c \
+	push.c reverse_rotate.c rotate.c move_both.c \
 	swap.c validation_utils.c validation.c ft_solve_high.c ft_solve_high_utils.c \
 	move_to_top.c best_push.c
 	

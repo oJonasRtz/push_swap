@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:49:58 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/03 11:22:16 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/03 14:23:21 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,6 @@ typedef struct s_cost
 	int	num_a;
 	int	num_b;
 	int	index_b;
-
-	int	rr_moves;
-	int	rrr_moves;
 }	t_cost;
 
 //	events.c
@@ -60,7 +57,6 @@ int		get_target(t_stack *stack);
 
 //	ft_init.c
 void	stack_init(char **s, t_stack *stack);
-void	check_pos_b(t_stack *stack, t_cost *cost);
 
 //	ft_solve_high
 void	large_sort(t_stack *stack);
@@ -84,10 +80,12 @@ void	double_operation(t_stack *stack,
 			void (*f)(t_stack *, int), int n, int flag);
 int		partially_sorted(t_stack *stack);
 
+//	move_both.c
+int		get_smallest_value(int n, int n2);
+void	move_both(t_stack *stack, t_cost *cost);
+
 //	move_to_top.c
 void	move_to_top(t_stack *stack, int num, char a_or_b);
-void	move_both(t_stack *stack, t_cost *cost);
-int		get_smaller_value(int n1, int n2);
 
 //	push.c
 void	ft_push(int **src, int **dest, int *src_size, int *dest_size);

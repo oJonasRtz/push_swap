@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 10:49:18 by jopereir          #+#    #+#             */
-/*   Updated: 2024/12/28 12:15:51 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/03 13:58:10 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,36 +92,3 @@ int	partially_sorted(t_stack *stack)
 		return (1);
 	return (0);
 }
-
-/*
-	return 0 if it was sorted
-		0 if it doesn't
-*/
-// int	partially_sorted(t_stack *stack)
-// {
-// 	double_operation(stack, &ft_pb, 2, 0);
-// 	if (already_sorted(stack, 0, stack->size_a))
-// 	{
-// 		double_operation(stack, &ft_pa, 2, 0);
-// 		ft_sa(stack, 1);
-// 		return (1);
-// 	}
-// 	double_operation(stack, &ft_pa, 2, 0);
-// 	double_operation(stack, &ft_rra, 2, 0);
-// 	ft_sa(stack, 0);
-// 	double_operation(stack, &ft_ra, 2, 0);
-// 	if (already_sorted(stack, 0, stack->size_a))
-// 		ft_printf("rra\nrra\nsa\nra\nra\n");
-// 	else
-// 	{
-// 		double_operation(stack, &ft_rra, 2, 0);
-// 		ft_sa(stack, 0);
-// 		double_operation(stack, &ft_ra, 2, 0);
-// 		ft_rra(stack, 1);
-// 		ft_sa(stack, 1);
-// 		ft_ra(stack, 1);
-// 	}
-// 	if (already_sorted(stack, 0, stack->size_a))
-// 		return (1);
-// 	return (0);
-// }
