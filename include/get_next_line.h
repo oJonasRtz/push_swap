@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:33:52 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/06 11:23:33 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/06 17:13:18 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #  define BUFFER_SIZE 10000
 # endif
 
-char	*get_next_line(int fd);
+char	*get_next_line(int fd, int flag);
 // void	*ft_calloc(size_t nmemb, size_t size);
 // char	*ft_strchr(char *s, int c);
 // int		ft_strlen(char *s);

@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:13:23 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/06 15:26:36 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/06 17:33:37 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,22 +41,25 @@ static int	call_commands(t_stack *stack, char *line)
 	return (0);
 }
 
-int	read_terminal(t_stack *stack)
+void	read_terminal(t_stack *stack)
 {
 	char	*temp;
-	int		out;
 
-	out = 0;
+	temp = get_next_line(0, 0);
 	while (1)
 	{
-		temp = get_next_line(0);
 		if (temp == NULL)
 			break ;
 		if (call_commands(stack, temp))
-			out = 1;
+		{
+			get_next_line(0, 1);
+			free(temp);
+			destroy_bonus(stack, "Error");
+		}
 		free(temp);
+		temp = get_next_line(0, 0);
 	}
-	return (out);
+	free(temp);
 }
 
 int	main(int argc, char *argv[])

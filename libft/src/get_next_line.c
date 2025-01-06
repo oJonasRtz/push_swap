@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 11:33:20 by jopereir          #+#    #+#             */
-/*   Updated: 2024/10/28 14:54:17 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/06 17:35:16 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,11 +108,13 @@ static char	*get_buffer_update(char *buffer)
 	if its called one shows the first line
 	if it twice shows the second line
 */
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, int flag)
 {
 	static char	*buffer;
 	char		*line;
 
+	if (flag && buffer)
+		return (ft_free(buffer, NULL));
 	if (fd == (-1) || BUFFER_SIZE <= 0)
 		return (NULL);
 	buffer = get_endl(fd, buffer);
