@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:00:57 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/06 14:25:02 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/06 15:57:36 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,6 @@ void	ft_push(int **src, int **dest, int *src_size, int *dest_size)
 	(*dest)[0] = (*src)[0];
 	ft_shift_left(src, src_size);
 	(*src_size)--;
-	if ((*src_size) == 0)
-		(*src) = NULL;
 }
 
 void	ft_pa(t_stack *stack, int flag)
