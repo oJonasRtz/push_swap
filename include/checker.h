@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:13:33 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/06 12:32:32 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/06 14:39:10 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ void	execute_bonus(t_stack *stack);
 void	destroy_bonus(t_stack *stack, char *message);
 
 //	checker.c
-void	read_terminal(t_stack *stack);
+int		read_terminal(t_stack *stack);
 
 #endif

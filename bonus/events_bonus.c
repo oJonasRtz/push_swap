@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 12:17:23 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/06 12:43:07 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/06 14:56:59 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ void	create_bonus(t_stack *stack, char **argv)
 
 void	execute_bonus(t_stack *stack)
 {
-	read_terminal(stack);
-	if (already_sorted(stack, 0, stack->size_a))
+	if (read_terminal(stack))
+		destroy_bonus(stack, "Error");
+	if (already_sorted(stack, 0, stack->size_a) && stack->b == NULL)
 		destroy_bonus(stack, "OK");
 	destroy_bonus(stack, "KO");
 }

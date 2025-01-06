@@ -6,13 +6,13 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 10:13:23 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/06 12:37:44 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/06 14:56:24 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/checker.h"
 
-static void	call_commands(t_stack *stack, char *line)
+static int	call_commands(t_stack *stack, char *line)
 {
 	if (ft_strncmp(line, "sa\n", 3) == 0)
 		ft_sa(stack, 0);
@@ -36,20 +36,27 @@ static void	call_commands(t_stack *stack, char *line)
 		ft_pa(stack, 0);
 	else if (ft_strncmp(line, "pb\n", 3) == 0)
 		ft_pb(stack, 0);
+	else
+		return (1);
+	return (0);
 }
 
-void	read_terminal(t_stack *stack)
+int	read_terminal(t_stack *stack)
 {
 	char	*temp;
+	int		out;
 
+	out = 0;
 	while (1)
 	{
 		temp = get_next_line(0);
 		if (temp == NULL)
 			break ;
-		call_commands(stack, temp);
+		if (call_commands(stack, temp))
+			out = 1;
 		free(temp);
 	}
+	return (out);
 }
 
 int	main(int argc, char *argv[])
