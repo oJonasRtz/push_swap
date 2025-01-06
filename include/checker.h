@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 10:42:42 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/06 12:41:48 by jopereir         ###   ########.fr       */
+/*   Created: 2025/01/06 10:13:33 by jopereir          #+#    #+#             */
+/*   Updated: 2025/01/06 12:32:32 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef CHECKER_H
+# define CHECKER_H
 
-int	main(int argc, char **argv)
-{
-	t_stack	stack;
+# include "push_swap.h"
+# include "libft.h"
+# include <fcntl.h>
 
-	if (argc < 2)
-		return (1);
-	create(argv, &stack);
-	return (0);
-}
+//	events_bonus.c
+void	create_bonus(t_stack *stack, char **argv);
+void	execute_bonus(t_stack *stack);
+void	destroy_bonus(t_stack *stack, char *message);
+
+//	checker.c
+void	read_terminal(t_stack *stack);
+
+#endif

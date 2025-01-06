@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:49:58 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/03 16:13:10 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/06 12:49:39 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	ft_sb(t_stack *stack, int flag);
 void	ft_ss(t_stack *stack, int flag);
 
 //	validation.c
-int		validate_stack(t_stack *stack, char **argv);
+int		validate_stack(t_stack *stack, char **argv, int flag);
 
 //	validation_utils.c
 int		is_less_than_int_min(int n, char *str);

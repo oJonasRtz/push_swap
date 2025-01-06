@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.c                                           :+:      :+:    :+:   */
+/*   events_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/13 11:53:59 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/06 12:43:31 by jopereir         ###   ########.fr       */
+/*   Created: 2025/01/06 12:17:23 by jopereir          #+#    #+#             */
+/*   Updated: 2025/01/06 12:43:07 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/checker.h"
 
-//Initiate the stacks with 0/NULL values
 static void	set_null(t_stack *stack)
 {
 	stack->a = NULL;
@@ -23,40 +22,25 @@ static void	set_null(t_stack *stack)
 	stack->operations_expected = 0;
 }
 
-/*
-	Init values
-	Validate the values
-		Quality requisit
-*/
-int	create(char **argv, t_stack *stack)
+void	create_bonus(t_stack *stack, char **argv)
 {
 	set_null(stack);
 	stack_init(&argv[1], stack);
 	validate_stack(stack, argv, 0);
 	if (!stack->a)
 		destroy(stack, NULL);
-	execute(stack);
-	return (1);
+	execute_bonus(stack);
 }
 
-/*
-	Execute the program
-		Functional requisit
-*/
-int	execute(t_stack *stack)
+void	execute_bonus(t_stack *stack)
 {
-	if (stack->size_a <= 7)
-		tiny_sort(stack);
-	else
-		large_sort(stack);
-	destroy(stack, NULL);
-	return (1);
+	read_terminal(stack);
+	if (already_sorted(stack, 0, stack->size_a))
+		destroy_bonus(stack, "OK");
+	destroy_bonus(stack, "KO");
 }
 
-/*
-	free every alloc memmory
-*/
-int	destroy(t_stack *stack, char *message)
+void	destroy_bonus(t_stack *stack, char *message)
 {
 	if (stack->a)
 		free(stack->a);
