@@ -6,7 +6,7 @@
 /*   By: jopereir <jopereir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 10:49:18 by jopereir          #+#    #+#             */
-/*   Updated: 2025/01/03 13:58:10 by jopereir         ###   ########.fr       */
+/*   Updated: 2025/01/06 15:42:12 by jopereir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	partially_sorted(t_stack *stack)
 {
 	if (already_sorted(stack, 2, stack->size_a))
 		ft_sa(stack, 1);
-	if (already_sorted(stack, 0, stack->size_a - 2))
+	else if (already_sorted(stack, 0, stack->size_a - 2))
 	{
 		double_operation(stack, &ft_rra, 2, 1);
 		ft_sa(stack, 1);
